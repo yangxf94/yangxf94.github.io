@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>MySQL安装-gz</title>
+      <link href="2021/04/01/MySQL%E5%AE%89%E8%A3%85-gz/"/>
+      <url>2021/04/01/MySQL%E5%AE%89%E8%A3%85-gz/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1、检查是否已安装过mariadb，若有便删除（linux系统自带的）</p><pre><code># rpm -qa | grep mariadbmariadb-libs-5.5.60-1.el7_5.x86_64# rpm -e --nodeps mariadb-libs-5.5.60-1.el7_5.x86_64</code></pre><p>2、检查是否已安装过mysql，若有便删除（linux系统自带的）</p><pre><code># rpm -qa | grep mysql</code></pre><p>3、检查mysql组和用户是否存在，如无创建：</p><pre><code># cat /etc/group | grep mysql# cat /etc/passwd |grep mysql</code></pre><p>创建用户和用户组</p><pre><code># groupadd mysql# useradd -r -g mysql mysql</code></pre><p>4、上传安装包到/usr/local下，解压并重命名</p><pre><code># tar -zxvf mysql-5.7.24-linux-glibc2.12-x86_64.tar.gz# mv mysql-5.7.24-linux-glibc2.12-x86_64 mysql</code></pre><p>5、在mysql目录下创建data目录</p><pre><code># mkdir /usr/local/mysql/data</code></pre><p>6、修改拥有者为mysql用户</p><pre><code>chown -R mysql:mysql /usr/local/mysql</code></pre><p>7、mysql5.7.17过后没有默认的my.cnf。需要自行添加vi my.cnf（/etc目录下）</p><pre><code># vi my.cnf</code></pre><p>添加内容如下：</p><pre><code>[client]port = 3306default-character-set=utf8[mysqld]# 一般配置选项basedir = /usr/local/mysqldatadir = /usr/local/mysql/dataport = 3306character-set-server=utf8default_storage_engine = InnoDBsql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</code></pre><p>8、设为开机启动</p><pre><code># cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql# vi /etc/init.d/mysql</code></pre><p>编辑内容:</p><pre><code>basedir=/usr/local/mysqldatadir=/usr/local/mysql/data</code></pre><p>9、进入mysql/bin目录下编译安装并初始化mysql，记住命令行末尾的密码：</p><pre><code># cd /usr/local/mysql/bin/# ./mysqld --initialize --user=mysql --datadir=/usr/local/mysql/data --basedir=/usr/local/mysql</code></pre><p>比如密码：oWOytRp)q6h,</p><p>如果报错./mysqld :error while loading shared libraries: libaio.so.1; cannot open shared object file    : No such file or directory<br>报错原因：系统需要安装libaio.so.1<br>下载：<a href="libaio-0.3.107-10.el6.x86_64.rpm" title="下载">点击下载</a><br>安装：</p><pre><code>rpm -ivh libaio-0.3.107-10.el6.x86_64.rpm</code></pre><p>10、执行启动命令</p><pre><code># service mysql start</code></pre><p>11、登录，进入mysql/bin目录下执行</p><pre><code># ./mysql -uroot -p</code></pre><p>输入密码</p><pre><code>Enter password: 输入第9步默认的临时密码</code></pre><p>修改密码</p><pre><code>set password=password(&quot;zhujie&quot;);</code></pre><p>设置远程访问</p><pre><code>GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;zhu88jie&#39;;flush privileges;</code></pre><p>验证：<br><img src="/2021/04/01/MySQL%E5%AE%89%E8%A3%85-gz/ip_image002.jpeg" class="lazyload" data-srcset="/2021/04/01/MySQL%E5%AE%89%E8%A3%85-gz/ip_image002.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="123"><br>新建数据库aio<br><img src="/2021/04/01/MySQL%E5%AE%89%E8%A3%85-gz/ip_image004.jpeg" class="lazyload" data-srcset="/2021/04/01/MySQL%E5%AE%89%E8%A3%85-gz/ip_image004.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="123"><br>导入aio.sql脚本<br>启动服务</p><pre><code># service mysql start</code></pre><p>终止服务</p><pre><code>service mysql stop</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
