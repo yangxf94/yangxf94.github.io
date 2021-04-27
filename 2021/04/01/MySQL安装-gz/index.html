@@ -574,38 +574,38 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
   <p>1、检查是否已安装过mariadb，若有便删除（linux系统自带的）</p>
-<pre><code># rpm -qa | grep mariadb
+<pre><code>rpm -qa | grep mariadb
 
 mariadb-libs-5.5.60-1.el7_5.x86_64
 
-# rpm -e --nodeps mariadb-libs-5.5.60-1.el7_5.x86_64
+rpm -e --nodeps mariadb-libs-5.5.60-1.el7_5.x86_64
 </code></pre>
 <p>2、检查是否已安装过mysql，若有便删除（linux系统自带的）</p>
-<pre><code># rpm -qa | grep mysql
+<pre><code>rpm -qa | grep mysql
 </code></pre>
 <p>3、检查mysql组和用户是否存在，如无创建：</p>
-<pre><code># cat /etc/group | grep mysql
+<pre><code>cat /etc/group | grep mysql
 
-# cat /etc/passwd |grep mysql
+cat /etc/passwd |grep mysql
 </code></pre>
 <p>创建用户和用户组</p>
-<pre><code># groupadd mysql
+<pre><code>groupadd mysql
 
-# useradd -r -g mysql mysql
+useradd -r -g mysql mysql
 </code></pre>
 <p>4、上传安装包到/usr/local下，解压并重命名</p>
-<pre><code># tar -zxvf mysql-5.7.24-linux-glibc2.12-x86_64.tar.gz
+<pre><code>tar -zxvf mysql-5.7.24-linux-glibc2.12-x86_64.tar.gz
 
-# mv mysql-5.7.24-linux-glibc2.12-x86_64 mysql
+mv mysql-5.7.24-linux-glibc2.12-x86_64 mysql
 </code></pre>
 <p>5、在mysql目录下创建data目录</p>
-<pre><code># mkdir /usr/local/mysql/data
+<pre><code>mkdir /usr/local/mysql/data
 </code></pre>
 <p>6、修改拥有者为mysql用户</p>
 <pre><code>chown -R mysql:mysql /usr/local/mysql
 </code></pre>
 <p>7、mysql5.7.17过后没有默认的my.cnf。需要自行添加vi my.cnf（/etc目录下）</p>
-<pre><code># vi my.cnf
+<pre><code>vi my.cnf
 </code></pre>
 <p>添加内容如下：</p>
 <pre><code>[client]
@@ -625,28 +625,28 @@ default_storage_engine = InnoDB
 sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 </code></pre>
 <p>8、设为开机启动</p>
-<pre><code># cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql
+<pre><code>cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql
 
-# vi /etc/init.d/mysql
+vi /etc/init.d/mysql
 </code></pre>
 <p>编辑内容:</p>
 <pre><code>basedir=/usr/local/mysql
 datadir=/usr/local/mysql/data
 </code></pre>
 <p>9、进入mysql/bin目录下编译安装并初始化mysql，记住命令行末尾的密码：</p>
-<pre><code># cd /usr/local/mysql/bin/
+<pre><code>cd /usr/local/mysql/bin/
 
-# ./mysqld --initialize --user=mysql --datadir=/usr/local/mysql/data --basedir=/usr/local/mysql
+./mysqld --initialize --user=mysql --datadir=/usr/local/mysql/data --basedir=/usr/local/mysql
 </code></pre>
 <p>比如密码：oWOytRp)q6h,</p>
 <p>如果报错./mysqld :error while loading shared libraries: libaio.so.1; cannot open shared object file    : No such file or directory<br>报错原因：系统需要安装libaio.so.1<br>下载：<a href="libaio-0.3.107-10.el6.x86_64.rpm" title="下载">点击下载</a><br>安装：</p>
 <pre><code>rpm -ivh libaio-0.3.107-10.el6.x86_64.rpm
 </code></pre>
 <p>10、执行启动命令</p>
-<pre><code># service mysql start
+<pre><code>service mysql start
 </code></pre>
 <p>11、登录，进入mysql/bin目录下执行</p>
-<pre><code># ./mysql -uroot -p
+<pre><code>./mysql -uroot -p
 </code></pre>
 <p>输入密码</p>
 <pre><code>Enter password: 输入第9步默认的临时密码
@@ -659,7 +659,7 @@ datadir=/usr/local/mysql/data
 flush privileges;
 </code></pre>
 <p>验证：<br><img src="/2021/04/01/MySQL%E5%AE%89%E8%A3%85-gz/ip_image002.jpeg" class="lazyload" data-srcset="/2021/04/01/MySQL%E5%AE%89%E8%A3%85-gz/ip_image002.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="123"><br>新建数据库aio<br><img src="/2021/04/01/MySQL%E5%AE%89%E8%A3%85-gz/ip_image004.jpeg" class="lazyload" data-srcset="/2021/04/01/MySQL%E5%AE%89%E8%A3%85-gz/ip_image004.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="123"><br>导入aio.sql脚本<br>启动服务</p>
-<pre><code># service mysql start
+<pre><code>service mysql start
 </code></pre>
 <p>终止服务</p>
 <pre><code>service mysql stop
@@ -759,6 +759,23 @@ flush privileges;
   
   
 
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/04/01/Idea%E7%94%9F%E6%88%90set-get/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Idea生成set-get</p>
+          <p class='content'>一、快速生成set/get：在类里面,按alt+insert。进行选择二、git上传忽略不必要文件
+</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/04/01/Windows%E4%BD%BF%E7%94%A8%E7%85%A7%E7%89%87%E6%9F%A5%E7%9C%8B%E5%99%A8/'>
+          <p class='title'>Windows使用照片查看器<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>win+Rregedit注册表
+HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindows Photo ViewerCapabilitiesFileAssociatio...</p>
+        </a>
+      
+    </div>
   
 </article>
 
@@ -867,14 +884,114 @@ flush privileges;
       <ul class="entry navigation">
         
           <li><a class="flat-box"
+            title="/categories/Hexo/" href="/categories/Hexo/"
+            id="categoriesHexo"
+            ><div class='name'>Hexo</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/"
+            id="categoriesE5908EE58FB0E6A186E69EB6"
+            ><div class='name'>后台框架</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Mybatis/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Mybatis/"
+            id="categoriesE5908EE58FB0E6A186E69EB6Mybatis"
+            ><div class='name'>Mybatis</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Spring/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Spring/"
+            id="categoriesE5908EE58FB0E6A186E69EB6Spring"
+            ><div class='name'>Spring</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Spring/%E6%B3%A8%E8%A7%A3/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Spring/%E6%B3%A8%E8%A7%A3/"
+            id="categoriesE5908EE58FB0E6A186E69EB6SpringE6B3A8E8A7A3"
+            ><div class='name'>注解</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/SpringBoot/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/SpringBoot/"
+            id="categoriesE5908EE58FB0E6A186E69EB6SpringBoot"
+            ><div class='name'>SpringBoot</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Swagger/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Swagger/"
+            id="categoriesE5908EE58FB0E6A186E69EB6Swagger"
+            ><div class='name'>Swagger</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"
+            id="categoriesE5BC80E58F91E5B7A5E585B7"
+            ><div class='name'>开发工具</div><div class='badge'>(7)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Hexo/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Hexo/"
+            id="categoriesE5BC80E58F91E5B7A5E585B7Hexo"
+            ><div class='name'>Hexo</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Idea/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Idea/"
+            id="categoriesE5BC80E58F91E5B7A5E585B7Idea"
+            ><div class='name'>Idea</div><div class='badge'>(5)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Idea/%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Idea/%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/"
+            id="categoriesE5BC80E58F91E5B7A5E585B7IdeaE59FBAE69CACE9858DE7BDAE"
+            ><div class='name'>基本配置</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/VSCode/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/VSCode/"
+            id="categoriesE5BC80E58F91E5B7A5E585B7VSCode"
+            ><div class='name'>VSCode</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/" href="/categories/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/"
+            id="categoriesE5BC80E58F91E8AFADE8A880"
+            ><div class='name'>开发语言</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/Java/" href="/categories/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/Java/"
+            id="categoriesE5BC80E58F91E8AFADE8A880Java"
+            ><div class='name'>Java</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
+            id="categoriesE6938DE4BD9CE7B3BBE7BB9F"
+            ><div class='name'>操作系统</div><div class='badge'>(7)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/"
+            id="categoriesE6938DE4BD9CE7B3BBE7BB9FLinux"
+            ><div class='name'>Linux</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Windows/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Windows/"
+            id="categoriesE6938DE4BD9CE7B3BBE7BB9FWindows"
+            ><div class='name'>Windows</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"
             id="categoriesE695B0E68DAEE5BA93"
-            ><div class='name'>数据库</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>数据库</div><div class='badge'>(8)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"
             id="categoriesE695B0E68DAEE5BA93MySQL"
-            ><div class='name'>MySQL</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>MySQL</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E7%BB%84%E4%BB%B6/" href="/categories/%E7%BB%84%E4%BB%B6/"
+            id="categoriesE7BB84E4BBB6"
+            ><div class='name'>组件</div><div class='badge'>(5)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E7%BB%84%E4%BB%B6/Nginx/" href="/categories/%E7%BB%84%E4%BB%B6/Nginx/"
+            id="categoriesE7BB84E4BBB6Nginx"
+            ><div class='name'>Nginx</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E7%BB%84%E4%BB%B6/ffmpeg/" href="/categories/%E7%BB%84%E4%BB%B6/ffmpeg/"
+            id="categoriesE7BB84E4BBB6ffmpeg"
+            ><div class='name'>ffmpeg</div><div class='badge'>(1)</div></a></li>
         
       </ul>
     </div>
@@ -898,7 +1015,7 @@ flush privileges;
 
 
     <div class='content'>
-      <a href="/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" style="font-size: 14px; color: #999">技术学习</a>
+      <a href="/tags/Hexo/" style="font-size: 14px; color: #999">Hexo</a> <a href="/tags/Linux/" style="font-size: 16px; color: #8b8b8b">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px; color: #999">MySQL</a> <a href="/tags/Nginx/" style="font-size: 18px; color: #7e7e7e">Nginx</a> <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" style="font-size: 22px; color: #636363">命令行</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" style="font-size: 24px; color: #555">技术学习</a> <a href="/tags/%E9%94%99%E8%AF%AF%E6%8E%92%E6%9F%A5/" style="font-size: 20px; color: #707070">错误排查</a>
     </div>
   </section>
 
@@ -1459,7 +1576,7 @@ var loadCSS = function( href, before, media, attributes ){
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('' == 'true') {
+          if ('true' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
@@ -1581,6 +1698,62 @@ var loadCSS = function( href, before, media, attributes ){
 
 
 
+
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+	volantis.pjax.push(pjax_initCopyCode)
+</script>
 
 
 
