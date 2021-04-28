@@ -6,8 +6,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -25,9 +23,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>分类：基本配置 - 我的技术站</title>
+  <title>Redis安装 - 我的技术站</title>
+  
+    <meta name="keywords" content="技术学习">
   
 
+  
+    <meta name="description" content="Redis安装">
   
 
   <!-- feed -->
@@ -450,7 +452,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: none;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div id='cover-backstretch'></div>
           
@@ -511,120 +513,234 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper" id="pjax-container">
           
 
-
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
   
+
+
+  
+  <div class="article-meta" id="top">
     
-      
-  <section class="post-list">
     
-      
+    
+      <h1 class="title">
+        Redis安装
+      </h1>
+      <div class='new-meta-box'>
         
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/about" rel="nofollow">
+    <img no-lazy src="https://cn.bing.com/th?id=AMMS_fc8f99fd41ebd737a71c4e13806db9a0&w=110&h=110&c=7&rs=1&qlt=80&pcl=f9f9f9&cdv=1&dpr=2&pid=16.1">
+    <p>YXF</p>
+  </a>
+</div>
+
           
         
           
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/04/01/Idea%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">
-        Idea基本配置
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>Idea基本配置</p>
-    
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a><span class="sep"></span><a class="category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/Redis/">Redis</a>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+
+
+          
         
-        <time>2021-04-01</time>
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年4月28日</p>
+  </a>
+</div>
+
+          
         
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><span class="sep"></span><a class="category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Idea/">Idea</a><span class="sep"></span><a class="category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Idea/%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">基本配置</a>
+          
+            
+
+          
         
       </div>
+    
+  </div>
+
+
+  
+  
+  <p><strong>1.</strong> <strong>安装配置</strong></p>
+<pre><code>$ wget http://download.redis.io/releases/redis-4.0.10.tar.gz
+$ tar xvf redis-4.0.11.tar.gz
+$ cd redis-4.0.11/
+$ make install PREFIX=/opt/redis-4.0.11
+$ cp redis.conf /opt/redis-4.0.11/
+$ cd /opt/redis-4.0.11
+
+$ vim redis.conf
+
+bind 0.0.0.0
+port 6379
+daemonize yes
+appendonly yes
+</code></pre>
+<p><strong>2</strong> <strong>启动服务</strong></p>
+<pre><code>$ cd src
+$ ./redis-server ../redis.conf
+1592:C 10 Oct 13:43:31.090 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+1592:C 10 Oct 13:43:31.090 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=1592, just started
+1592:C 10 Oct 13:43:31.090 # Configuration loaded
+</code></pre>
+<p><strong>3</strong> <strong>终止服务</strong></p>
+<pre><code>$ ps aux|grep redis
+root   1593 0.1 0.0 145316 7524 ?    Ssl 13:43  0:00 bin/redis-server 0.0.0.0:6379
+$ kill -9 1593 
+</code></pre>
+<p><strong>或者</strong></p>
+<pre><code>$ cd /opt/redis-4.0.1
+$ bin/redis-cli shutdown
+</code></pre>
+<p><strong>4</strong> <strong>验证服务</strong></p>
+<pre><code>[root@cluster74 redis-4.0.11]# bin/redis-cli -h 10.10.7.74
+127.0.0.1:6379&gt; set &#39;redis&#39; &#39;ok&#39;
+OK
+127.0.0.1:6379&gt; get &#39;redis&#39;
+&quot;ok&quot;
+127.0.0.1:6379&gt; quit
+</code></pre>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2021/04/01/Idea%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/'>
-            阅读全文
-          </a>
-        </div>
+      
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-04-28T11:12:29+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年4月28日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
+          
   
-  
-  
-  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>技术学习</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
-    <h2 class="article-title" >
-      <a href="/2021/04/01/Idea%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%BE%E7%BD%AE/">
-        Idea快捷键设置
-      </a>
-    </h2>
-  
-  <div class='md'>
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.yangxufei.cn/2021/04/28/Redis%E5%AE%89%E8%A3%85/&title=Redis安装 - 我的技术站&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
     
-      <p>Idea快捷键设置</p>
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.yangxufei.cn/2021/04/28/Redis%E5%AE%89%E8%A3%85/&title=Redis安装 - 我的技术站&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.yangxufei.cn/2021/04/28/Redis%E5%AE%89%E8%A3%85/&title=Redis安装 - 我的技术站&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time>2021-04-01</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><span class="sep"></span><a class="category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Idea/">Idea</a><span class="sep"></span><a class="category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Idea/%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/">基本配置</a>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2021/04/01/Idea%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%BE%E7%BD%AE/'>
-            阅读全文
-          </a>
-        </div>
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/04/28/GitLab%E5%AE%89%E8%A3%85/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>GitLab安装</p>
+          <p class='content'>下载：https://packages.gitlab.com/gitlab/gitlab-ce
+下载的时候注意要安装的版本区别，el7和el8代表centos为7或8版本
+el7和ol7为不同版...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/04/28/Redis%E5%91%BD%E4%BB%A4%E8%A1%8C/'>
+          <p class='title'>Redis命令行<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>1.数据存入：set [key] [value]
+2.数据取出：get [key]
+3.数据删除：del [key]
+4.所有key：keys *
+5.选择不同库：select ID      ...</p>
+        </a>
       
     </div>
   
+</article>
 
-</div>
 
-          </div>
-        
-      
-    
-  </section>
   
-    
+
   
 
 
-    
-  
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -722,7 +838,22 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/Hexo/" href="/categories/Hexo/"
             id="categoriesHexo"
-            ><div class='name'>Hexo</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>Hexo</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"
+            id="categoriesE4B8ADE997B4E4BBB6"
+            ><div class='name'>中间件</div><div class='badge'>(7)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/GitLab/" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/GitLab/"
+            id="categoriesE4B8ADE997B4E4BBB6GitLab"
+            ><div class='name'>GitLab</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/Redis/" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/Redis/"
+            id="categoriesE4B8ADE997B4E4BBB6Redis"
+            ><div class='name'>Redis</div><div class='badge'>(4)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/"
@@ -740,11 +871,6 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             ><div class='name'>Spring</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box child"
-            title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Spring/%E6%B3%A8%E8%A7%A3/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Spring/%E6%B3%A8%E8%A7%A3/"
-            id="categoriesE5908EE58FB0E6A186E69EB6SpringE6B3A8E8A7A3"
-            ><div class='name'>注解</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box child"
             title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/SpringBoot/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/SpringBoot/"
             id="categoriesE5908EE58FB0E6A186E69EB6SpringBoot"
             ><div class='name'>SpringBoot</div><div class='badge'>(1)</div></a></li>
@@ -757,22 +883,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           <li><a class="flat-box"
             title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"
             id="categoriesE5BC80E58F91E5B7A5E585B7"
-            ><div class='name'>开发工具</div><div class='badge'>(7)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Hexo/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Hexo/"
-            id="categoriesE5BC80E58F91E5B7A5E585B7Hexo"
-            ><div class='name'>Hexo</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>开发工具</div><div class='badge'>(6)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Idea/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Idea/"
             id="categoriesE5BC80E58F91E5B7A5E585B7Idea"
             ><div class='name'>Idea</div><div class='badge'>(5)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Idea/%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Idea/%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/"
-            id="categoriesE5BC80E58F91E5B7A5E585B7IdeaE59FBAE69CACE9858DE7BDAE"
-            ><div class='name'>基本配置</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box child"
             title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/VSCode/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/VSCode/"
@@ -851,7 +967,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-      <a href="/tags/Hexo/" style="font-size: 14px; color: #999">Hexo</a> <a href="/tags/Linux/" style="font-size: 16px; color: #8b8b8b">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px; color: #999">MySQL</a> <a href="/tags/Nginx/" style="font-size: 18px; color: #7e7e7e">Nginx</a> <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" style="font-size: 22px; color: #636363">命令行</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" style="font-size: 24px; color: #555">技术学习</a> <a href="/tags/%E9%94%99%E8%AF%AF%E6%8E%92%E6%9F%A5/" style="font-size: 20px; color: #707070">错误排查</a>
+      <a href="/tags/GitLab/" style="font-size: 18px; color: #7e7e7e">GitLab</a> <a href="/tags/Hexo/" style="font-size: 16px; color: #8b8b8b">Hexo</a> <a href="/tags/Linux/" style="font-size: 16px; color: #8b8b8b">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px; color: #999">MySQL</a> <a href="/tags/Nginx/" style="font-size: 20px; color: #707070">Nginx</a> <a href="/tags/ffmpeg/" style="font-size: 14px; color: #999">ffmpeg</a> <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" style="font-size: 22px; color: #636363">命令行</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" style="font-size: 24px; color: #555">技术学习</a> <a href="/tags/%E9%94%99%E8%AF%AF%E6%8E%92%E6%9F%A5/" style="font-size: 20px; color: #707070">错误排查</a>
     </div>
   </section>
 
@@ -862,132 +978,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
 
-<section class="widget qrcode shadow ">
-  
-
-  <div class='content article-entry'>
-    
-      <img src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/qrcode/github@volantis.png'
-      
-        height='64px'
-      />
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-
-<section class="widget shadow desktop">
-  
-  <header>
-    
-      <i class="fas fa-award fa-fw" aria-hidden="true"></i><span class='name'>小站信息</span>
-    
-  </header>
 
 
-  <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>小站文章数目：</div>
-          <div>33 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>域名运行时间：</div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
-        </div>
-        <script>
-          var BirthDay = new Date(new Date('2019/12/19'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
-        </script>
-      
-
-
-      
-
-      
-
-      
-
-      
-        <div class="webinfo-item">
-          <div>上次活动时间：</div>
-          
-            <div id="last-update" style="display: none;">Tue Apr 27 2021 17:30:37 GMT+0800 (GMT+08:00)</div>
-            <div id="last-update-show">2021-04-27 日</div>
-          
-        </div>
-        
-        <script>
-          function timeago(dateTimeStamp) {
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
-              var hour = minute * 60;
-              var day = hour * 24;
-              var week = day * 7;
-              var month = day * 30;
-              var now = new Date().getTime(); //获取当前时间毫秒
-              var diffValue = now - dateTimeStamp; //时间差
-              if (diffValue < 0) {
-                  return;
-              }
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
-              var hourC = diffValue / hour;
-              var dayC = diffValue / day;
-              var weekC = diffValue / week;
-              var monthC = diffValue / month;
-              if (monthC >= 1 && monthC <= 3) {
-                  result = " " + parseInt(monthC) + " 月前"
-              } else if (weekC >= 1 && weekC <= 3) {
-                  result = " " + parseInt(weekC) + " 周前"
-              } else if (dayC >= 1 && dayC <= 6) {
-                  result = " " + parseInt(dayC) + " 天前"
-              } else if (hourC >= 1 && hourC <= 23) {
-                  result = " " + parseInt(hourC) + " 小时前"
-              } else if (minC >= 1 && minC <= 59) {
-                  result = " " + parseInt(minC) + " 分钟前"
-              } else if (diffValue >= 0 && diffValue <= minute) {
-                  result = "刚刚"
-              } else {
-                  var datetime = new Date();
-                  datetime.setTime(dateTimeStamp);
-                  var Nyear = datetime.getFullYear();
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-                  result = Nyear + "-" + Nmonth + "-" + Ndate
-              }
-              return result;
-          }
-          var lastUpDate = document.getElementById('last-update').innerHTML;
-          try {
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
-          } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2021-04-27 日';
-          }
-        </script>
-        
-      
-    </div>
-  </div>
-</section>
 
   
 
 
 </aside>
+
 
 
 		  
@@ -996,8 +994,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="Redis安装";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   // header 这里无论是否开启pjax都需要
