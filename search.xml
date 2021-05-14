@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>Windows安装SourceTree</title>
+      <link href="2021/04/29/Windows%E5%AE%89%E8%A3%85SourceTree/"/>
+      <url>2021/04/29/Windows%E5%AE%89%E8%A3%85SourceTree/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Windows安装了Git进行版本管理，但是在日常使用的时候，使用命令行感觉不太方便，同事推荐了这个，感觉不错，就写下来。</p><h2 id="1-SourceTree下载"><a href="#1-SourceTree下载" class="headerlink" title="1.SourceTree下载"></a>1.SourceTree下载</h2><p>下载的话资源放到百度网盘，毕竟基本的速度在大多数的情况下还是不错的。</p><h2 id="2-SourceTree安装"><a href="#2-SourceTree安装" class="headerlink" title="2.SourceTree安装"></a>2.SourceTree安装</h2><p>安装很简单，exe执行安装即可（安装完不要打开，执行破解）</p><h2 id="3-SourceTree破解"><a href="#3-SourceTree破解" class="headerlink" title="3.SourceTree破解"></a>3.SourceTree破解</h2><p>破解是需要注意一下，在安装完成后在这个目录下</p><pre><code>C:\Users\用户\AppData\Local\Atlassian\SourceTree （或者 %LocalAppData%\Atlassian\SourceTree\）</code></pre><p>新建accounts.json文件，写入内容</p><pre><code>[  &#123;    &quot;$id&quot;: &quot;1&quot;,    &quot;$type&quot;: &quot;SourceTree.Api.Host.Identity.Model.IdentityAccount, SourceTree.Api.Host.Identity&quot;,    &quot;Authenticate&quot;: true,    &quot;HostInstance&quot;: &#123;      &quot;$id&quot;: &quot;2&quot;,      &quot;$type&quot;: &quot;SourceTree.Host.Atlassianaccount.AtlassianAccountInstance, SourceTree.Host.AtlassianAccount&quot;,      &quot;Host&quot;: &#123;        &quot;$id&quot;: &quot;3&quot;,        &quot;$type&quot;: &quot;SourceTree.Host.Atlassianaccount.AtlassianAccountHost, SourceTree.Host.AtlassianAccount&quot;,        &quot;Id&quot;: &quot;atlassian account&quot;      &#125;,      &quot;BaseUrl&quot;: &quot;https://id.atlassian.com/&quot;    &#125;,    &quot;Credentials&quot;: &#123;      &quot;$id&quot;: &quot;4&quot;,      &quot;$type&quot;: &quot;SourceTree.Model.BasicAuthCredentials, SourceTree.Api.Account&quot;,      &quot;Username&quot;: &quot;&quot;,      &quot;Email&quot;: null    &#125;,    &quot;IsDefault&quot;: false  &#125;]</code></pre><p>然后再去打开SourceTree就行了。easy…….</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开发工具 </category>
+          
+          <category> Git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Windows系统安装Git</title>
+      <link href="2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/"/>
+      <url>2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-下载Git安装程序"><a href="#1-下载Git安装程序" class="headerlink" title="1.下载Git安装程序"></a>1.下载Git安装程序</h2><p>默认下载最新版：<a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p><p>旧版程序下载：<a href="https://mirrors.edge.kernel.org/pub/software/scm/git/">https://mirrors.edge.kernel.org/pub/software/scm/git/</a></p><h2 id="2-Git安装过程"><a href="#2-Git安装过程" class="headerlink" title="2.Git安装过程"></a>2.Git安装过程</h2><p>  双击看到的第一个界面如下图：</p><h3 id="01、使用许可声明"><a href="#01、使用许可声明" class="headerlink" title="01、使用许可声明"></a>01、使用许可声明</h3><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/99-204159875.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/99-204159875.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  点击“Next”进入下图页面：</p><h3 id="02、选择安装路径"><a href="#02、选择安装路径" class="headerlink" title="02、选择安装路径"></a>02、选择安装路径</h3><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/314-72109490.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/314-72109490.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  在输入框内输入想要安装到的本机路径，也就是实际文件夹位置，或点击“Browse…”选择已经存在的文件夹，然后点击“Next”按钮继续，进入下图界面：</p><h3 id="03、选择安装组件"><a href="#03、选择安装组件" class="headerlink" title="03、选择安装组件"></a>03、选择安装组件</h3><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/70-706153120.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/70-706153120.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  上图红框内的选项是默认勾选的，建议不要动。绿色框1是决定是否在桌面创建快捷方式的。绿色框2是决定在所有控制台窗口中使用TrueType字体和是否每天检查Git是否有Windows更新的。这些根据自己需要选择。</p><p>  点击“Next”按钮进入下图界面：</p><h3 id="04、选择开始菜单页"><a href="#04、选择开始菜单页" class="headerlink" title="04、选择开始菜单页"></a>04、选择开始菜单页</h3><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/2-2069291501.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/2-2069291501.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  这个界面是创建开始菜单中的名称，不需要修改，直接点“Next”按钮继续到下图的界面：</p><h3 id="05、选择Git文件默认的编辑器"><a href="#05、选择Git文件默认的编辑器" class="headerlink" title="05、选择Git文件默认的编辑器"></a>05、选择Git文件默认的编辑器</h3><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/3-1420181946.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/3-1420181946.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  这个页面是在选择Git文件默认的编辑器，很少用到，所以默认Vim即可，直接点“Next”按钮继续到下图的界面：</p><h3 id="06、调整您的PATH环境"><a href="#06、调整您的PATH环境" class="headerlink" title="06、调整您的PATH环境"></a>06、调整您的PATH环境</h3><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/85-925145764.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/85-925145764.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  这个界面是调整您的PATH环境。</p><p>  第一种配置是“仅从Git Bash使用Git”。这是最安全的选择，因为您的PATH根本不会被修改。您只能使用 Git Bash 的 Git 命令行工具。但是这将不能通过第三方软件使用。</p><p>  第二种配置是“从命令行以及第三方软件进行Git”。该选项被认为是安全的，因为它仅向PATH添加了一些最小的Git包装器，以避免使用可选的Unix工具造成环境混乱。</p><p>您将能够从Git Bash，命令提示符和Windows PowerShell以及在PATH中寻找Git的任何第三方软件中使用Git。这也是推荐的选项。</p><p>  第三种配置是“从命令提示符使用Git和可选的Unix工具”。警告：这将覆盖Windows工具，如 “ find 和 sort ”。只有在了解其含义后才使用此选项。</p><p>  我选择推荐的选项第二种配置，点击“Next”按钮继续到下图的界面：</p><h3 id="07、选择HTTPS后端传输"><a href="#07、选择HTTPS后端传输" class="headerlink" title="07、选择HTTPS后端传输"></a>07、选择HTTPS后端传输</h3><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/69-580118165.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/69-580118165.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  这个界面是选择HTTPS后端传输。</p><p>  第一个选项是“使用 OpenSSL 库”。服务器证书将使用ca-bundle.crt文件进行验证。这也是我们常用的选项。</p><p>  第二个选项是“使用本地 Windows 安全通道库”。服务器证书将使用Windows证书存储验证。此选项还允许您使用公司的内部根CA证书，例如通过Active Directory Domain Services 。</p><p>  我使用默认选项第一项，点击“Next”按钮继续到下图的界面：</p><h3 id="08、配置行尾符号转换"><a href="#08、配置行尾符号转换" class="headerlink" title="08、配置行尾符号转换"></a>08、配置行尾符号转换</h3><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/15-826904755.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/15-826904755.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  这个界面是配置行尾符号转换。</p><p>  第一个选项是“签出Windows风格，提交Unix风格的行尾”。签出文本文件时，Git会将LF转换为CRLF。提交文本文件时，CRLF将转换为LF。对于跨平台项目，这是Windows上的推荐设置（“ core.autocrlf”设置为“ true”）</p><p>  第二个选项是“按原样签出，提交Unix样式的行尾”。签出文本文件时，Git不会执行任何转换。 提交文本文件时，CRLF将转换为LF。对于跨平台项目，这是Unix上的建议设置（“ core.autocrlf”设置为“ input”）</p><p>  第三种选项是“按原样签出，按原样提交”。当签出或提交文本文件时，Git不会执行任何转换。不建议跨平台项目选择此选项（“ core.autocrlf”设置为“ false”）</p><p>  我选择第一种选项，点击“Next”按钮继续到下图的界面：</p><h3 id="09、配置终端模拟器以与Git-Bash一起使用"><a href="#09、配置终端模拟器以与Git-Bash一起使用" class="headerlink" title="09、配置终端模拟器以与Git Bash一起使用"></a>09、配置终端模拟器以与Git Bash一起使用</h3><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/2-1419125919.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/2-1419125919.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  这个界面是配置终端模拟器以与Git Bash一起使用。</p><p>  第一个选项是“使用MinTTY（MSYS2的默认终端）”。Git Bash将使用MinTTY作为终端模拟器，该模拟器具有可调整大小的窗口，非矩形选择和Unicode字体。Windows控制台程序（例如交互式Python）必须通过“ winpty”启动才能在MinTTY中运行。</p><p>  第二个选项是“使用Windows的默认控制台窗口”。Git将使用Windows的默认控制台窗口（“cmd.exe”），该窗口可以与Win32控制台程序（如交互式Python或node.js）一起使用，但默认的回滚非常有限，需要配置为使用unicode 字体以正确显示非ASCII字符，并且在Windows 10之前，其窗口不能自由调整大小，并且只允许矩形文本选择。</p><p>  我选择默认的第一种选项，点击“Next”按钮继续到下图的界面：</p><h3 id="10、配置配置额外的选项"><a href="#10、配置配置额外的选项" class="headerlink" title="10、配置配置额外的选项"></a>10、配置配置额外的选项</h3><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/48-377025701.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/48-377025701.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  这个界面是配置配置额外的选项。</p><p>  第一个选项是“启用文件系统缓存”。文件系统数据将被批量读取并缓存在内存中用于某些操作（“core.fscache”设置为“true”）。 这提供了显著的性能提升。</p><p>  第二个选项是“启用Git凭证管理器”。Windows的Git凭证管理器为Windows提供安全的Git凭证存储，最显着的是对Visual Studio Team Services和GitHub的多因素身份验证支持。 （需要.NET Framework v4.5.1或更高版本）。</p><p>  第三个选项是“启用符号链接”。启用符号链接（需要SeCreateSymbolicLink权限）。请注意，现有存储库不受此设置的影响。</p><p>  我勾选默认的第一、第二选项，点击“Next”按钮继续到下图的界面：</p><h3 id="11、配置实验选项"><a href="#11、配置实验选项" class="headerlink" title="11、配置实验选项"></a>11、配置实验选项</h3><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/54-471895252.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/54-471895252.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  这个界面是配置实验选项。</p><p>  启用实验性的内置添加 -i / -p。（新！）使用实验性的内置交互式add（“ git add -i”或“ git add -p”）。这使其速度更快（尤其是启动！），但尚未被认为是可靠的。</p><p>  默认不勾选，直接点击“Next”按钮继续到下图的安装进度界面：</p><h3 id="12、安装进度指示"><a href="#12、安装进度指示" class="headerlink" title="12、安装进度指示"></a>12、安装进度指示</h3><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/79-893075884.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/79-893075884.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  安装进度结束之后，会出现下图的完成Git安装向导界面：</p><h3 id="13、安装完成"><a href="#13、安装完成" class="headerlink" title="13、安装完成"></a>13、安装完成</h3><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/1-1456464008.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/1-1456464008.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  在这个界面，可以勾选是否启动启动Git Bash和是否查看发行说明，然后点“Finish”按钮退出安装界面。</p><h3 id="14、启动测试"><a href="#14、启动测试" class="headerlink" title="14、启动测试"></a>14、启动测试</h3><p>  到此，Git的安装完成，可以在开始菜单中看到Git的三个启动图标（Git Bash、Git CMD(Deprecated)、Git GUI）。</p><p>  Git Bash，是Git配套的一个控制台，点击打开如下图：</p><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/5-2131846814.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/5-2131846814.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  Git CMD(Deprecated)，是通过CMD使用Git（不推荐使用），点击打开如下图：</p><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/40-284429455.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/40-284429455.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  Git GUI，是Git的可视化操作工具，点击打开如下图：</p><p><img src="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/6-1877881765.png" class="lazyload" data-srcset="/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/6-1877881765.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>  以上就是Git的安装过程，后续如果有所变化，再对本文进行修正。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开发工具 </category>
+          
+          <category> Git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>GitLab添加yml文件.gitlab-ci.yml</title>
       <link href="2021/04/28/GitLab%E6%B7%BB%E5%8A%A0yml%E6%96%87%E4%BB%B6-gitlab-ci-yml/"/>
       <url>2021/04/28/GitLab%E6%B7%BB%E5%8A%A0yml%E6%96%87%E4%BB%B6-gitlab-ci-yml/</url>
@@ -13,7 +67,7 @@
       
       <categories>
           
-          <category> 中间件 </category>
+          <category> 开发工具 </category>
           
           <category> GitLab </category>
           
@@ -42,7 +96,7 @@
       
       <categories>
           
-          <category> 中间件 </category>
+          <category> 开发工具 </category>
           
           <category> GitLab </category>
           
@@ -71,7 +125,7 @@
       
       <categories>
           
-          <category> 中间件 </category>
+          <category> 开发工具 </category>
           
           <category> GitLab </category>
           
@@ -91,11 +145,11 @@
     
     
     <entry>
-      <title>Redis安装</title>
-      <link href="2021/04/28/Redis%E5%AE%89%E8%A3%85/"/>
-      <url>2021/04/28/Redis%E5%AE%89%E8%A3%85/</url>
+      <title>Redis命令行</title>
+      <link href="2021/04/28/Redis%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
+      <url>2021/04/28/Redis%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>1.</strong> <strong>安装配置</strong></p><pre><code>$ wget http://download.redis.io/releases/redis-4.0.10.tar.gz$ tar xvf redis-4.0.11.tar.gz$ cd redis-4.0.11/$ make install PREFIX=/opt/redis-4.0.11$ cp redis.conf /opt/redis-4.0.11/$ cd /opt/redis-4.0.11$ vim redis.confbind 0.0.0.0port 6379daemonize yesappendonly yes</code></pre><p><strong>2</strong> <strong>启动服务</strong></p><pre><code>$ cd src$ ./redis-server ../redis.conf1592:C 10 Oct 13:43:31.090 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo1592:C 10 Oct 13:43:31.090 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=1592, just started1592:C 10 Oct 13:43:31.090 # Configuration loaded</code></pre><p><strong>3</strong> <strong>终止服务</strong></p><pre><code>$ ps aux|grep redisroot   1593 0.1 0.0 145316 7524 ?    Ssl 13:43  0:00 bin/redis-server 0.0.0.0:6379$ kill -9 1593 </code></pre><p><strong>或者</strong></p><pre><code>$ cd /opt/redis-4.0.1$ bin/redis-cli shutdown</code></pre><p><strong>4</strong> <strong>验证服务</strong></p><pre><code>[root@cluster74 redis-4.0.11]# bin/redis-cli -h 10.10.7.74127.0.0.1:6379&gt; set &#39;redis&#39; &#39;ok&#39;OK127.0.0.1:6379&gt; get &#39;redis&#39;&quot;ok&quot;127.0.0.1:6379&gt; quit</code></pre>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1.数据存入：set [key] [value]</p><p>2.数据取出：get [key]</p><p>3.数据删除：del [key]</p><p>4.所有key：keys *</p><p>5.选择不同库：select ID        ID为库编号，默认为16个库，即0-15</p><p>启动：</p><pre><code>./redis-server ../redis.conf</code></pre><p>关闭：</p><pre><code>./redis-cli shutdown</code></pre><p>查看运行：ps aux|grep redis</p><p>启动多个Redis进程，需要在启动时指定不同端口</p><pre><code>./redis-server ../redis.conf --port 6380</code></pre><p>创建多个Redis目录</p><p>创建多个Redis目录，以端口号命名：</p><p>比如：创建6381、6382两个目录，将redis的安装文件bin和conf拷贝至这两个目录。</p><p>修改6381目录下的redis.conf设置端口号为6381</p><p>修改6382目录下的redis.conf设置端口号为6382</p><p>启动6381和6382目录下的redis-server程序：</p><pre><code>cd 6381./redis-server . /redis.confcd 6382./redis-server . /redis.conf</code></pre>]]></content>
       
       
       <categories>
@@ -118,11 +172,11 @@
     
     
     <entry>
-      <title>Redis命令行</title>
-      <link href="2021/04/28/Redis%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
-      <url>2021/04/28/Redis%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
+      <title>Redis安装</title>
+      <link href="2021/04/28/Redis%E5%AE%89%E8%A3%85/"/>
+      <url>2021/04/28/Redis%E5%AE%89%E8%A3%85/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1.数据存入：set [key] [value]</p><p>2.数据取出：get [key]</p><p>3.数据删除：del [key]</p><p>4.所有key：keys *</p><p>5.选择不同库：select ID        ID为库编号，默认为16个库，即0-15</p><p>启动：</p><pre><code>./redis-server ../redis.conf</code></pre><p>关闭：</p><pre><code>./redis-cli shutdown</code></pre><p>查看运行：ps aux|grep redis</p><p>启动多个Redis进程，需要在启动时指定不同端口</p><pre><code>./redis-server ../redis.conf --port 6380</code></pre><p>创建多个Redis目录</p><p>创建多个Redis目录，以端口号命名：</p><p>比如：创建6381、6382两个目录，将redis的安装文件bin和conf拷贝至这两个目录。</p><p>修改6381目录下的redis.conf设置端口号为6381</p><p>修改6382目录下的redis.conf设置端口号为6382</p><p>启动6381和6382目录下的redis-server程序：</p><pre><code>cd 6381./redis-server . /redis.confcd 6382./redis-server . /redis.conf</code></pre>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>1.</strong> <strong>安装配置</strong></p><pre><code>$ wget http://download.redis.io/releases/redis-4.0.10.tar.gz$ tar xvf redis-4.0.11.tar.gz$ cd redis-4.0.11/$ make install PREFIX=/opt/redis-4.0.11$ cp redis.conf /opt/redis-4.0.11/$ cd /opt/redis-4.0.11$ vim redis.confbind 0.0.0.0port 6379daemonize yesappendonly yes</code></pre><p><strong>2</strong> <strong>启动服务</strong></p><pre><code>$ cd src$ ./redis-server ../redis.conf1592:C 10 Oct 13:43:31.090 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo1592:C 10 Oct 13:43:31.090 # Redis version=4.0.11, bits=64, commit=00000000, modified=0, pid=1592, just started1592:C 10 Oct 13:43:31.090 # Configuration loaded</code></pre><p><strong>3</strong> <strong>终止服务</strong></p><pre><code>$ ps aux|grep redisroot   1593 0.1 0.0 145316 7524 ?    Ssl 13:43  0:00 bin/redis-server 0.0.0.0:6379$ kill -9 1593 </code></pre><p><strong>或者</strong></p><pre><code>$ cd /opt/redis-4.0.1$ bin/redis-cli shutdown</code></pre><p><strong>4</strong> <strong>验证服务</strong></p><pre><code>[root@cluster74 redis-4.0.11]# bin/redis-cli -h 10.10.7.74127.0.0.1:6379&gt; set &#39;redis&#39; &#39;ok&#39;OK127.0.0.1:6379&gt; get &#39;redis&#39;&quot;ok&quot;127.0.0.1:6379&gt; quit</code></pre>]]></content>
       
       
       <categories>
@@ -371,33 +425,6 @@
     
     
     <entry>
-      <title>MySQL建立数据库</title>
-      <link href="2021/04/27/MySQL%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-      <url>2021/04/27/MySQL%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="1-连接数据库："><a href="#1-连接数据库：" class="headerlink" title="1.连接数据库："></a>1.连接数据库：</h3><pre><code>mysql -uroot -p123456</code></pre><h3 id="2-建库："><a href="#2-建库：" class="headerlink" title="2.建库："></a>2.建库：</h3><pre><code>create database if not exists RUNOOB default charset utf8 collate utf8_general_ci;</code></pre><p>创建数据库，该命令的作用：</p><ul><li>\1. 如果数据库不存在则创建，存在则不创建。</li><li>\2. 创建RUNOOB数据库，并设定编码集为utf8</li></ul><h3 id="3-进入数据库："><a href="#3-进入数据库：" class="headerlink" title="3.进入数据库："></a>3.进入数据库：</h3><pre><code>use RUNOOB;</code></pre><h3 id="4-建表："><a href="#4-建表：" class="headerlink" title="4.建表："></a>4.建表：</h3><h3 id="5-插入数据"><a href="#5-插入数据" class="headerlink" title="5.插入数据"></a>5.插入数据</h3><p>创建PI6000数据库</p><pre><code>create schema pi6000 default character set utf8mb4 collate utf8mb4_general_ci;</code></pre><p>创建PI6000用户并授权</p><pre><code>create user &#39;pi6000&#39;@&#39;%&#39; identified by &#39;Fkpt@3140&#39;; #创建用户并指定密码</code></pre><p>用户授权数据库：</p><pre><code>GRANT ALL PRIVILEGES ON pi6000.* TO &#39;pi6000&#39;@&#39;%&#39; identified by &#39;Fkpt@3140&#39;;flush privileges;</code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> 数据库 </category>
-          
-          <category> MySQL </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 技术学习 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>MySQL安装-命令行</title>
       <link href="2021/04/27/MySQL%E5%AE%89%E8%A3%85-%E5%91%BD%E4%BB%A4%E8%A1%8C/"/>
       <url>2021/04/27/MySQL%E5%AE%89%E8%A3%85-%E5%91%BD%E4%BB%A4%E8%A1%8C/</url>
@@ -419,6 +446,33 @@
             <tag> 技术学习 </tag>
             
             <tag> 命令行 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MySQL建立数据库</title>
+      <link href="2021/04/27/MySQL%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+      <url>2021/04/27/MySQL%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="1-连接数据库："><a href="#1-连接数据库：" class="headerlink" title="1.连接数据库："></a>1.连接数据库：</h3><pre><code>mysql -uroot -p123456</code></pre><h3 id="2-建库："><a href="#2-建库：" class="headerlink" title="2.建库："></a>2.建库：</h3><pre><code>create database if not exists RUNOOB default charset utf8 collate utf8_general_ci;</code></pre><p>创建数据库，该命令的作用：</p><ul><li>\1. 如果数据库不存在则创建，存在则不创建。</li><li>\2. 创建RUNOOB数据库，并设定编码集为utf8</li></ul><h3 id="3-进入数据库："><a href="#3-进入数据库：" class="headerlink" title="3.进入数据库："></a>3.进入数据库：</h3><pre><code>use RUNOOB;</code></pre><h3 id="4-建表："><a href="#4-建表：" class="headerlink" title="4.建表："></a>4.建表：</h3><h3 id="5-插入数据"><a href="#5-插入数据" class="headerlink" title="5.插入数据"></a>5.插入数据</h3><p>创建PI6000数据库</p><pre><code>create schema pi6000 default character set utf8mb4 collate utf8mb4_general_ci;</code></pre><p>创建PI6000用户并授权</p><pre><code>create user &#39;pi6000&#39;@&#39;%&#39; identified by &#39;Fkpt@3140&#39;; #创建用户并指定密码</code></pre><p>用户授权数据库：</p><pre><code>GRANT ALL PRIVILEGES ON pi6000.* TO &#39;pi6000&#39;@&#39;%&#39; identified by &#39;Fkpt@3140&#39;;flush privileges;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术学习 </tag>
             
         </tags>
       
@@ -703,6 +757,33 @@
     
     
     <entry>
+      <title>Linux远程连接失败</title>
+      <link href="2021/04/05/Linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5/"/>
+      <url>2021/04/05/Linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）"><a href="#问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）" class="headerlink" title="问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）"></a>问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）</h2><h3 id="1、安装vsftpd"><a href="#1、安装vsftpd" class="headerlink" title="1、安装vsftpd"></a>1、安装vsftpd</h3><pre><code>yum install vsftpd -y</code></pre><h3 id="2、启动ftp服务"><a href="#2、启动ftp服务" class="headerlink" title="2、启动ftp服务"></a>2、启动ftp服务</h3><pre><code>systemctl start vsftpd systemctl status vsftpd  查看服务当前状态</code></pre><h3 id="3、设置开机启动"><a href="#3、设置开机启动" class="headerlink" title="3、设置开机启动"></a>3、设置开机启动</h3><pre><code>systemctl enable vsftpd </code></pre><h3 id="4、更改配置"><a href="#4、更改配置" class="headerlink" title="4、更改配置"></a>4、更改配置</h3><pre><code>vi /etc/vsftpd/vsftpd.conf</code></pre><p>修改以下配置项</p><pre><code>anonymous_enable=NO</code></pre><h3 id="5、重启ftp服务"><a href="#5、重启ftp服务" class="headerlink" title="5、重启ftp服务"></a>5、重启ftp服务</h3><pre><code>systemctl restart vsftpd</code></pre><h3 id="6、彻底关闭防火墙"><a href="#6、彻底关闭防火墙" class="headerlink" title="6、彻底关闭防火墙"></a>6、彻底关闭防火墙</h3><pre><code>systemctl stop firewalld.service 停止防火墙systemctl disable firewalld.service 禁止防火墙开机启动</code></pre><h3 id="7、修改-etc-selinux-config-文件"><a href="#7、修改-etc-selinux-config-文件" class="headerlink" title="7、修改/etc/selinux/config 文件"></a>7、修改/etc/selinux/config 文件</h3><pre><code>vi /etc/selinux/config</code></pre><p>修改文件的配置项： SELINUX=enforcing改为SELINUX=disabled</p><h3 id="8、重启虚拟机，FlashFXP重新连接"><a href="#8、重启虚拟机，FlashFXP重新连接" class="headerlink" title="8、重启虚拟机，FlashFXP重新连接"></a>8、重启虚拟机，FlashFXP重新连接</h3><pre><code>reboot</code></pre><h2 id="问题二：解决问题一后，重新连接，报了530-permission-denied的错"><a href="#问题二：解决问题一后，重新连接，报了530-permission-denied的错" class="headerlink" title="问题二：解决问题一后，重新连接，报了530 permission denied的错"></a>问题二：解决问题一后，重新连接，报了530 permission denied的错</h2><p>问题分析：因为linux设定root不准连接，所以需要修改/etc/vsftpd下的配置文件，允许root连接即可（通常不推荐，存在安全问题）。</p><p>问题解决步骤：</p><h3 id="1、修改ftpusers文件"><a href="#1、修改ftpusers文件" class="headerlink" title="1、修改ftpusers文件"></a>1、修改ftpusers文件</h3><pre><code>vi ftpusers将root注释掉：#root</code></pre><h3 id="2、修改user-list文件"><a href="#2、修改user-list文件" class="headerlink" title="2、修改user_list文件"></a>2、修改user_list文件</h3><pre><code>vi user_list 将root注释掉：#root</code></pre><h3 id="3、重启ftp服务"><a href="#3、重启ftp服务" class="headerlink" title="3、重启ftp服务"></a>3、重启ftp服务</h3><pre><code>systemctl restart vsftpd</code></pre><h3 id="4、FlashFXP重新连接，成功"><a href="#4、FlashFXP重新连接，成功" class="headerlink" title="4、FlashFXP重新连接，成功"></a>4、FlashFXP重新连接，成功</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 错误排查 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux资源占用查看</title>
       <link href="2021/04/05/Linux%E8%B5%84%E6%BA%90%E5%8D%A0%E7%94%A8%E6%9F%A5%E7%9C%8B/"/>
       <url>2021/04/05/Linux%E8%B5%84%E6%BA%90%E5%8D%A0%E7%94%A8%E6%9F%A5%E7%9C%8B/</url>
@@ -724,33 +805,6 @@
             <tag> 技术学习 </tag>
             
             <tag> Linux </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Linux远程连接失败</title>
-      <link href="2021/04/05/Linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5/"/>
-      <url>2021/04/05/Linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）"><a href="#问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）" class="headerlink" title="问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）"></a>问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）</h2><h3 id="1、安装vsftpd"><a href="#1、安装vsftpd" class="headerlink" title="1、安装vsftpd"></a>1、安装vsftpd</h3><pre><code>yum install vsftpd -y</code></pre><h3 id="2、启动ftp服务"><a href="#2、启动ftp服务" class="headerlink" title="2、启动ftp服务"></a>2、启动ftp服务</h3><pre><code>systemctl start vsftpd systemctl status vsftpd  查看服务当前状态</code></pre><h3 id="3、设置开机启动"><a href="#3、设置开机启动" class="headerlink" title="3、设置开机启动"></a>3、设置开机启动</h3><pre><code>systemctl enable vsftpd </code></pre><h3 id="4、更改配置"><a href="#4、更改配置" class="headerlink" title="4、更改配置"></a>4、更改配置</h3><pre><code>vi /etc/vsftpd/vsftpd.conf</code></pre><p>修改以下配置项</p><pre><code>anonymous_enable=NO</code></pre><h3 id="5、重启ftp服务"><a href="#5、重启ftp服务" class="headerlink" title="5、重启ftp服务"></a>5、重启ftp服务</h3><pre><code>systemctl restart vsftpd</code></pre><h3 id="6、彻底关闭防火墙"><a href="#6、彻底关闭防火墙" class="headerlink" title="6、彻底关闭防火墙"></a>6、彻底关闭防火墙</h3><pre><code>systemctl stop firewalld.service 停止防火墙systemctl disable firewalld.service 禁止防火墙开机启动</code></pre><h3 id="7、修改-etc-selinux-config-文件"><a href="#7、修改-etc-selinux-config-文件" class="headerlink" title="7、修改/etc/selinux/config 文件"></a>7、修改/etc/selinux/config 文件</h3><pre><code>vi /etc/selinux/config</code></pre><p>修改文件的配置项： SELINUX=enforcing改为SELINUX=disabled</p><h3 id="8、重启虚拟机，FlashFXP重新连接"><a href="#8、重启虚拟机，FlashFXP重新连接" class="headerlink" title="8、重启虚拟机，FlashFXP重新连接"></a>8、重启虚拟机，FlashFXP重新连接</h3><pre><code>reboot</code></pre><h2 id="问题二：解决问题一后，重新连接，报了530-permission-denied的错"><a href="#问题二：解决问题一后，重新连接，报了530-permission-denied的错" class="headerlink" title="问题二：解决问题一后，重新连接，报了530 permission denied的错"></a>问题二：解决问题一后，重新连接，报了530 permission denied的错</h2><p>问题分析：因为linux设定root不准连接，所以需要修改/etc/vsftpd下的配置文件，允许root连接即可（通常不推荐，存在安全问题）。</p><p>问题解决步骤：</p><h3 id="1、修改ftpusers文件"><a href="#1、修改ftpusers文件" class="headerlink" title="1、修改ftpusers文件"></a>1、修改ftpusers文件</h3><pre><code>vi ftpusers将root注释掉：#root</code></pre><h3 id="2、修改user-list文件"><a href="#2、修改user-list文件" class="headerlink" title="2、修改user_list文件"></a>2、修改user_list文件</h3><pre><code>vi user_list 将root注释掉：#root</code></pre><h3 id="3、重启ftp服务"><a href="#3、重启ftp服务" class="headerlink" title="3、重启ftp服务"></a>3、重启ftp服务</h3><pre><code>systemctl restart vsftpd</code></pre><h3 id="4、FlashFXP重新连接，成功"><a href="#4、FlashFXP重新连接，成功" class="headerlink" title="4、FlashFXP重新连接，成功"></a>4、FlashFXP重新连接，成功</h3>]]></content>
-      
-      
-      <categories>
-          
-          <category> 操作系统 </category>
-          
-          <category> Linux </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 错误排查 </tag>
             
         </tags>
       

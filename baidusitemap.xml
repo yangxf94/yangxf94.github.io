@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.yangxufei.cn/2021/04/29/Windows%E5%AE%89%E8%A3%85SourceTree/</loc>
+    <lastmod>2021-04-29</lastmod>
+  </url>
+  <url>
+    <loc>http://www.yangxufei.cn/2021/04/29/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85Git/</loc>
+    <lastmod>2021-04-29</lastmod>
+  </url>
+  <url>
     <loc>http://www.yangxufei.cn/2021/04/28/GitLab%E6%B7%BB%E5%8A%A0yml%E6%96%87%E4%BB%B6-gitlab-ci-yml/</loc>
     <lastmod>2021-04-28</lastmod>
   </url>
@@ -13,11 +21,11 @@
     <lastmod>2021-04-28</lastmod>
   </url>
   <url>
-    <loc>http://www.yangxufei.cn/2021/04/28/Redis%E5%AE%89%E8%A3%85/</loc>
+    <loc>http://www.yangxufei.cn/2021/04/28/Redis%E5%91%BD%E4%BB%A4%E8%A1%8C/</loc>
     <lastmod>2021-04-28</lastmod>
   </url>
   <url>
-    <loc>http://www.yangxufei.cn/2021/04/28/Redis%E5%91%BD%E4%BB%A4%E8%A1%8C/</loc>
+    <loc>http://www.yangxufei.cn/2021/04/28/Redis%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2021-04-28</lastmod>
   </url>
   <url>
@@ -53,11 +61,11 @@
     <lastmod>2021-04-27</lastmod>
   </url>
   <url>
-    <loc>http://www.yangxufei.cn/2021/04/27/MySQL%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <loc>http://www.yangxufei.cn/2021/04/27/MySQL%E5%AE%89%E8%A3%85-%E5%91%BD%E4%BB%A4%E8%A1%8C/</loc>
     <lastmod>2021-04-27</lastmod>
   </url>
   <url>
-    <loc>http://www.yangxufei.cn/2021/04/27/MySQL%E5%AE%89%E8%A3%85-%E5%91%BD%E4%BB%A4%E8%A1%8C/</loc>
+    <loc>http://www.yangxufei.cn/2021/04/27/MySQL%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2021-04-27</lastmod>
   </url>
   <url>
@@ -101,11 +109,11 @@
     <lastmod>2021-04-06</lastmod>
   </url>
   <url>
-    <loc>http://www.yangxufei.cn/2021/04/05/Linux%E8%B5%84%E6%BA%90%E5%8D%A0%E7%94%A8%E6%9F%A5%E7%9C%8B/</loc>
+    <loc>http://www.yangxufei.cn/2021/04/05/Linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5/</loc>
     <lastmod>2021-04-05</lastmod>
   </url>
   <url>
-    <loc>http://www.yangxufei.cn/2021/04/05/Linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5/</loc>
+    <loc>http://www.yangxufei.cn/2021/04/05/Linux%E8%B5%84%E6%BA%90%E5%8D%A0%E7%94%A8%E6%9F%A5%E7%9C%8B/</loc>
     <lastmod>2021-04-05</lastmod>
   </url>
   <url>
