@@ -8,7 +8,7 @@
       <link href="2021/04/29/Windows%E5%AE%89%E8%A3%85SourceTree/"/>
       <url>2021/04/29/Windows%E5%AE%89%E8%A3%85SourceTree/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Windows安装了Git进行版本管理，但是在日常使用的时候，使用命令行感觉不太方便，同事推荐了这个，感觉不错，就写下来。</p><h2 id="1-SourceTree下载"><a href="#1-SourceTree下载" class="headerlink" title="1.SourceTree下载"></a>1.SourceTree下载</h2><p>下载的话资源放到百度网盘，毕竟基本的速度在大多数的情况下还是不错的。</p><h2 id="2-SourceTree安装"><a href="#2-SourceTree安装" class="headerlink" title="2.SourceTree安装"></a>2.SourceTree安装</h2><p>安装很简单，exe执行安装即可（安装完不要打开，执行破解）</p><h2 id="3-SourceTree破解"><a href="#3-SourceTree破解" class="headerlink" title="3.SourceTree破解"></a>3.SourceTree破解</h2><p>破解是需要注意一下，在安装完成后在这个目录下</p><pre><code>C:\Users\用户\AppData\Local\Atlassian\SourceTree （或者 %LocalAppData%\Atlassian\SourceTree\）</code></pre><p>新建accounts.json文件，写入内容</p><pre><code>[  &#123;    &quot;$id&quot;: &quot;1&quot;,    &quot;$type&quot;: &quot;SourceTree.Api.Host.Identity.Model.IdentityAccount, SourceTree.Api.Host.Identity&quot;,    &quot;Authenticate&quot;: true,    &quot;HostInstance&quot;: &#123;      &quot;$id&quot;: &quot;2&quot;,      &quot;$type&quot;: &quot;SourceTree.Host.Atlassianaccount.AtlassianAccountInstance, SourceTree.Host.AtlassianAccount&quot;,      &quot;Host&quot;: &#123;        &quot;$id&quot;: &quot;3&quot;,        &quot;$type&quot;: &quot;SourceTree.Host.Atlassianaccount.AtlassianAccountHost, SourceTree.Host.AtlassianAccount&quot;,        &quot;Id&quot;: &quot;atlassian account&quot;      &#125;,      &quot;BaseUrl&quot;: &quot;https://id.atlassian.com/&quot;    &#125;,    &quot;Credentials&quot;: &#123;      &quot;$id&quot;: &quot;4&quot;,      &quot;$type&quot;: &quot;SourceTree.Model.BasicAuthCredentials, SourceTree.Api.Account&quot;,      &quot;Username&quot;: &quot;&quot;,      &quot;Email&quot;: null    &#125;,    &quot;IsDefault&quot;: false  &#125;]</code></pre><p>然后再去打开SourceTree就行了。easy…….</p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Windows安装了Git进行版本管理，但是在日常使用的时候，使用命令行感觉不太方便，同事推荐了这个，感觉不错，就写下来。</p><h2 id="1-SourceTree下载"><a href="#1-SourceTree下载" class="headerlink" title="1.SourceTree下载"></a>1.SourceTree下载</h2><p>下载的话资源放到百度网盘，毕竟基本的速度在大多数的情况下还是不错的。</p><h2 id="2-SourceTree安装"><a href="#2-SourceTree安装" class="headerlink" title="2.SourceTree安装"></a>2.SourceTree安装</h2><p>安装很简单，exe执行安装即可（安装完不要打开，执行破解）（如果打开，会有配置流程的出现，but，没有账号是不能登陆的，如果看到这个，退出，看下面的破解）</p><h2 id="3-SourceTree破解"><a href="#3-SourceTree破解" class="headerlink" title="3.SourceTree破解"></a>3.SourceTree破解</h2><p>破解是需要注意一下，在安装完成后在这个目录下</p><pre><code>C:\Users\用户\AppData\Local\Atlassian\SourceTree （或者 %LocalAppData%\Atlassian\SourceTree\）</code></pre><p>新建accounts.json文件，写入内容</p><pre><code>[  &#123;    &quot;$id&quot;: &quot;1&quot;,    &quot;$type&quot;: &quot;SourceTree.Api.Host.Identity.Model.IdentityAccount, SourceTree.Api.Host.Identity&quot;,    &quot;Authenticate&quot;: true,    &quot;HostInstance&quot;: &#123;      &quot;$id&quot;: &quot;2&quot;,      &quot;$type&quot;: &quot;SourceTree.Host.Atlassianaccount.AtlassianAccountInstance, SourceTree.Host.AtlassianAccount&quot;,      &quot;Host&quot;: &#123;        &quot;$id&quot;: &quot;3&quot;,        &quot;$type&quot;: &quot;SourceTree.Host.Atlassianaccount.AtlassianAccountHost, SourceTree.Host.AtlassianAccount&quot;,        &quot;Id&quot;: &quot;atlassian account&quot;      &#125;,      &quot;BaseUrl&quot;: &quot;https://id.atlassian.com/&quot;    &#125;,    &quot;Credentials&quot;: &#123;      &quot;$id&quot;: &quot;4&quot;,      &quot;$type&quot;: &quot;SourceTree.Model.BasicAuthCredentials, SourceTree.Api.Account&quot;,      &quot;Username&quot;: &quot;&quot;,      &quot;Email&quot;: null    &#125;,    &quot;IsDefault&quot;: false  &#125;]</code></pre><p>然后再去打开SourceTree就行了（打开的时候会让选什么Mercurial，选最后一个，不想使用）。easy…….</p>]]></content>
       
       
       <categories>
@@ -120,7 +120,7 @@
       <link href="2021/04/28/GitLab%E5%AE%89%E8%A3%85/"/>
       <url>2021/04/28/GitLab%E5%AE%89%E8%A3%85/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>下载：<a href="https://packages.gitlab.com/gitlab/gitlab-ce">https://packages.gitlab.com/gitlab/gitlab-ce</a></p><p>下载的时候注意要安装的版本区别，el7和el8代表centos为7或8版本</p><p>el7和ol7为不同版本，使用rpm -q centos-release查看</p><p>文件放到opt目录</p><p>关闭防火墙</p><pre><code>systemctl disable firewalldsystemctl stop firewalld</code></pre><p>安装依赖：</p><pre><code>yum install -y curl policycoreutils-python openssh-server</code></pre><p>安装：</p><pre><code>rpm -i gitlab-ce-13.4.4-ce.0.el7.x86_64.rpm</code></pre><p><strong>配置gitlib的IP和端口</strong></p><pre><code>vi /etc/gitlab/gitlab.rb</code></pre><p> 进入gitlab.rb修改IP和端口：进入编辑器后按“i”键进入编辑状态，ESC键退出编辑状态，退出并保存，命令输入“:wq”</p><p><img src="/2021/04/28/GitLab%E5%AE%89%E8%A3%85/790b8f_720w.jpeg" class="lazyload" data-srcset="/2021/04/28/GitLab%E5%AE%89%E8%A3%85/790b8f_720w.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>如果8080端口被别的服务占用可以改成8081 8082等，如果开启额防火墙，需要把相应的端口放开：例如：</p><pre><code>firewall-cmd --zone=public --add-port=8080/tcp --permanent</code></pre><p><strong>重置并启动GitLab</strong></p><p>配置：</p><pre><code>gitlab-ctl reconfigure</code></pre><p>启动GitLab：</p><pre><code>gitlab-ctl restart</code></pre><p><strong>Gitlab相关操作及说明：</strong></p><pre><code>/etc/gitlab/gitlab.rb          #gitlab配置文件/opt/gitlab                    #gitlab的程序安装目录/var/opt/gitlab                #gitlab目录数据目录/var/opt/gitlab/git-data       #存放仓库数据gitlab-ctl reconfigure         #重新加载配置gitlab-ctl status              #查看当前gitlab所有服务运行状态gitlab-ctl stop                #停止gitlab服务gitlab-ctl stop nginx          #单独停止某个服务gitlab-ctl tail                #查看所有服务的日志</code></pre><p><strong>Gitlab的服务构成：</strong></p><pre><code>nginx：                静态web服务器gitlab-workhorse       轻量级反向代理服务器logrotate              日志文件管理工具postgresql             数据库redis                  缓存数据库sidekiq                用于在后台执行队列任务（异步执行）</code></pre>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>下载：<a href="https://packages.gitlab.com/gitlab/gitlab-ce">https://packages.gitlab.com/gitlab/gitlab-ce</a></p><p>下载的时候注意要安装的版本区别，el7和el8代表centos为7或8版本</p><p>el7和ol7为不同版本，使用rpm -q centos-release查看</p><p>文件放到opt目录</p><p>关闭防火墙</p><pre><code>systemctl disable firewalldsystemctl stop firewalld</code></pre><p>安装依赖：</p><pre><code>yum install -y curl policycoreutils-python openssh-server</code></pre><p>安装：</p><pre><code>rpm -i gitlab-ce-13.4.4-ce.0.el7.x86_64.rpm</code></pre><p><strong>配置gitlib的IP和端口</strong></p><pre><code>vi /etc/gitlab/gitlab.rb</code></pre><p> 进入gitlab.rb修改IP和端口：进入编辑器后按“i”键进入编辑状态，ESC键退出编辑状态，退出并保存，命令输入“:wq”</p><p><img src="/2021/04/28/GitLab%E5%AE%89%E8%A3%85/790b8f_720w.jpeg" class="lazyload" data-srcset="/2021/04/28/GitLab%E5%AE%89%E8%A3%85/790b8f_720w.jpeg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p><p>如果8080端口被别的服务占用可以改成8081 8082等，如果开启额防火墙，需要把相应的端口放开：例如：</p><pre><code>firewall-cmd --zone=public --add-port=8080/tcp --permanent</code></pre><p><strong>重置并启动GitLab</strong></p><p>配置：</p><pre><code>gitlab-ctl reconfigure</code></pre><p>启动GitLab：</p><pre><code>gitlab-ctl restart</code></pre><p><strong>重置root初始密码</strong></p><p>进入GitLab环境：</p><pre><code>gitlab-rails console -e production</code></pre><p>定位首位用户（root）</p><pre><code>user = User.where(id: 1).first </code></pre><p>重置密码：</p><pre><code>user.password=12345678</code></pre><p>确认重置密码：</p><pre><code>user.password_confirmation=12345678</code></pre><p>保存密码信息：</p><pre><code>user.save!</code></pre><p>退出：</p><pre><code>exit</code></pre><p><strong>Gitlab相关操作及说明：</strong></p><pre><code>/etc/gitlab/gitlab.rb          #gitlab配置文件/opt/gitlab                    #gitlab的程序安装目录/var/opt/gitlab                #gitlab目录数据目录/var/opt/gitlab/git-data       #存放仓库数据gitlab-ctl reconfigure         #重新加载配置gitlab-ctl status              #查看当前gitlab所有服务运行状态gitlab-ctl stop                #停止gitlab服务gitlab-ctl stop nginx          #单独停止某个服务gitlab-ctl tail                #查看所有服务的日志</code></pre><p><strong>Gitlab的服务构成：</strong></p><pre><code>nginx：                静态web服务器gitlab-workhorse       轻量级反向代理服务器logrotate              日志文件管理工具postgresql             数据库redis                  缓存数据库sidekiq                用于在后台执行队列任务（异步执行）</code></pre>]]></content>
       
       
       <categories>
@@ -757,33 +757,6 @@
     
     
     <entry>
-      <title>Linux远程连接失败</title>
-      <link href="2021/04/05/Linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5/"/>
-      <url>2021/04/05/Linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）"><a href="#问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）" class="headerlink" title="问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）"></a>问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）</h2><h3 id="1、安装vsftpd"><a href="#1、安装vsftpd" class="headerlink" title="1、安装vsftpd"></a>1、安装vsftpd</h3><pre><code>yum install vsftpd -y</code></pre><h3 id="2、启动ftp服务"><a href="#2、启动ftp服务" class="headerlink" title="2、启动ftp服务"></a>2、启动ftp服务</h3><pre><code>systemctl start vsftpd systemctl status vsftpd  查看服务当前状态</code></pre><h3 id="3、设置开机启动"><a href="#3、设置开机启动" class="headerlink" title="3、设置开机启动"></a>3、设置开机启动</h3><pre><code>systemctl enable vsftpd </code></pre><h3 id="4、更改配置"><a href="#4、更改配置" class="headerlink" title="4、更改配置"></a>4、更改配置</h3><pre><code>vi /etc/vsftpd/vsftpd.conf</code></pre><p>修改以下配置项</p><pre><code>anonymous_enable=NO</code></pre><h3 id="5、重启ftp服务"><a href="#5、重启ftp服务" class="headerlink" title="5、重启ftp服务"></a>5、重启ftp服务</h3><pre><code>systemctl restart vsftpd</code></pre><h3 id="6、彻底关闭防火墙"><a href="#6、彻底关闭防火墙" class="headerlink" title="6、彻底关闭防火墙"></a>6、彻底关闭防火墙</h3><pre><code>systemctl stop firewalld.service 停止防火墙systemctl disable firewalld.service 禁止防火墙开机启动</code></pre><h3 id="7、修改-etc-selinux-config-文件"><a href="#7、修改-etc-selinux-config-文件" class="headerlink" title="7、修改/etc/selinux/config 文件"></a>7、修改/etc/selinux/config 文件</h3><pre><code>vi /etc/selinux/config</code></pre><p>修改文件的配置项： SELINUX=enforcing改为SELINUX=disabled</p><h3 id="8、重启虚拟机，FlashFXP重新连接"><a href="#8、重启虚拟机，FlashFXP重新连接" class="headerlink" title="8、重启虚拟机，FlashFXP重新连接"></a>8、重启虚拟机，FlashFXP重新连接</h3><pre><code>reboot</code></pre><h2 id="问题二：解决问题一后，重新连接，报了530-permission-denied的错"><a href="#问题二：解决问题一后，重新连接，报了530-permission-denied的错" class="headerlink" title="问题二：解决问题一后，重新连接，报了530 permission denied的错"></a>问题二：解决问题一后，重新连接，报了530 permission denied的错</h2><p>问题分析：因为linux设定root不准连接，所以需要修改/etc/vsftpd下的配置文件，允许root连接即可（通常不推荐，存在安全问题）。</p><p>问题解决步骤：</p><h3 id="1、修改ftpusers文件"><a href="#1、修改ftpusers文件" class="headerlink" title="1、修改ftpusers文件"></a>1、修改ftpusers文件</h3><pre><code>vi ftpusers将root注释掉：#root</code></pre><h3 id="2、修改user-list文件"><a href="#2、修改user-list文件" class="headerlink" title="2、修改user_list文件"></a>2、修改user_list文件</h3><pre><code>vi user_list 将root注释掉：#root</code></pre><h3 id="3、重启ftp服务"><a href="#3、重启ftp服务" class="headerlink" title="3、重启ftp服务"></a>3、重启ftp服务</h3><pre><code>systemctl restart vsftpd</code></pre><h3 id="4、FlashFXP重新连接，成功"><a href="#4、FlashFXP重新连接，成功" class="headerlink" title="4、FlashFXP重新连接，成功"></a>4、FlashFXP重新连接，成功</h3>]]></content>
-      
-      
-      <categories>
-          
-          <category> 操作系统 </category>
-          
-          <category> Linux </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 错误排查 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Linux资源占用查看</title>
       <link href="2021/04/05/Linux%E8%B5%84%E6%BA%90%E5%8D%A0%E7%94%A8%E6%9F%A5%E7%9C%8B/"/>
       <url>2021/04/05/Linux%E8%B5%84%E6%BA%90%E5%8D%A0%E7%94%A8%E6%9F%A5%E7%9C%8B/</url>
@@ -805,6 +778,33 @@
             <tag> 技术学习 </tag>
             
             <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux远程连接失败</title>
+      <link href="2021/04/05/Linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5/"/>
+      <url>2021/04/05/Linux%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）"><a href="#问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）" class="headerlink" title="问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）"></a>问题一：使用FlashFXP连接腾讯云服务器，装的是CentOS7系统，出现连接失败（连接已拒绝）</h2><h3 id="1、安装vsftpd"><a href="#1、安装vsftpd" class="headerlink" title="1、安装vsftpd"></a>1、安装vsftpd</h3><pre><code>yum install vsftpd -y</code></pre><h3 id="2、启动ftp服务"><a href="#2、启动ftp服务" class="headerlink" title="2、启动ftp服务"></a>2、启动ftp服务</h3><pre><code>systemctl start vsftpd systemctl status vsftpd  查看服务当前状态</code></pre><h3 id="3、设置开机启动"><a href="#3、设置开机启动" class="headerlink" title="3、设置开机启动"></a>3、设置开机启动</h3><pre><code>systemctl enable vsftpd </code></pre><h3 id="4、更改配置"><a href="#4、更改配置" class="headerlink" title="4、更改配置"></a>4、更改配置</h3><pre><code>vi /etc/vsftpd/vsftpd.conf</code></pre><p>修改以下配置项</p><pre><code>anonymous_enable=NO</code></pre><h3 id="5、重启ftp服务"><a href="#5、重启ftp服务" class="headerlink" title="5、重启ftp服务"></a>5、重启ftp服务</h3><pre><code>systemctl restart vsftpd</code></pre><h3 id="6、彻底关闭防火墙"><a href="#6、彻底关闭防火墙" class="headerlink" title="6、彻底关闭防火墙"></a>6、彻底关闭防火墙</h3><pre><code>systemctl stop firewalld.service 停止防火墙systemctl disable firewalld.service 禁止防火墙开机启动</code></pre><h3 id="7、修改-etc-selinux-config-文件"><a href="#7、修改-etc-selinux-config-文件" class="headerlink" title="7、修改/etc/selinux/config 文件"></a>7、修改/etc/selinux/config 文件</h3><pre><code>vi /etc/selinux/config</code></pre><p>修改文件的配置项： SELINUX=enforcing改为SELINUX=disabled</p><h3 id="8、重启虚拟机，FlashFXP重新连接"><a href="#8、重启虚拟机，FlashFXP重新连接" class="headerlink" title="8、重启虚拟机，FlashFXP重新连接"></a>8、重启虚拟机，FlashFXP重新连接</h3><pre><code>reboot</code></pre><h2 id="问题二：解决问题一后，重新连接，报了530-permission-denied的错"><a href="#问题二：解决问题一后，重新连接，报了530-permission-denied的错" class="headerlink" title="问题二：解决问题一后，重新连接，报了530 permission denied的错"></a>问题二：解决问题一后，重新连接，报了530 permission denied的错</h2><p>问题分析：因为linux设定root不准连接，所以需要修改/etc/vsftpd下的配置文件，允许root连接即可（通常不推荐，存在安全问题）。</p><p>问题解决步骤：</p><h3 id="1、修改ftpusers文件"><a href="#1、修改ftpusers文件" class="headerlink" title="1、修改ftpusers文件"></a>1、修改ftpusers文件</h3><pre><code>vi ftpusers将root注释掉：#root</code></pre><h3 id="2、修改user-list文件"><a href="#2、修改user-list文件" class="headerlink" title="2、修改user_list文件"></a>2、修改user_list文件</h3><pre><code>vi user_list 将root注释掉：#root</code></pre><h3 id="3、重启ftp服务"><a href="#3、重启ftp服务" class="headerlink" title="3、重启ftp服务"></a>3、重启ftp服务</h3><pre><code>systemctl restart vsftpd</code></pre><h3 id="4、FlashFXP重新连接，成功"><a href="#4、FlashFXP重新连接，成功" class="headerlink" title="4、FlashFXP重新连接，成功"></a>4、FlashFXP重新连接，成功</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 错误排查 </tag>
             
         </tags>
       

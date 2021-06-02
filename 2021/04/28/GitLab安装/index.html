@@ -641,6 +641,25 @@ systemctl stop firewalld
 <p>启动GitLab：</p>
 <pre><code>gitlab-ctl restart
 </code></pre>
+<p><strong>重置root初始密码</strong></p>
+<p>进入GitLab环境：</p>
+<pre><code>gitlab-rails console -e production
+</code></pre>
+<p>定位首位用户（root）</p>
+<pre><code>user = User.where(id: 1).first 
+</code></pre>
+<p>重置密码：</p>
+<pre><code>user.password=12345678
+</code></pre>
+<p>确认重置密码：</p>
+<pre><code>user.password_confirmation=12345678
+</code></pre>
+<p>保存密码信息：</p>
+<pre><code>user.save!
+</code></pre>
+<p>退出：</p>
+<pre><code>exit
+</code></pre>
 <p><strong>Gitlab相关操作及说明：</strong></p>
 <pre><code>/etc/gitlab/gitlab.rb          #gitlab配置文件
 /opt/gitlab                    #gitlab的程序安装目录
