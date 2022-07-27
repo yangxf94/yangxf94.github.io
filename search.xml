@@ -1336,11 +1336,11 @@
     
     
     <entry>
-      <title>Idea快捷键设置</title>
-      <link href="2021/04/01/Idea%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%BE%E7%BD%AE/"/>
-      <url>2021/04/01/Idea%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%BE%E7%BD%AE/</url>
+      <title>Idea生成set-get</title>
+      <link href="2021/04/01/Idea%E7%94%9F%E6%88%90set-get/"/>
+      <url>2021/04/01/Idea%E7%94%9F%E6%88%90set-get/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>位置：File–&gt;Settings–&gt;Keymap<br>全局搜索：双击shift<br>Ctrl+W关闭：Main menu–&gt;Window–&gt;Editor Tabs–&gt;Close<br>回退/取消回退：Main menu–&gt;Edit–&gt;Undo/Redo</p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="一、快速生成set-get：在类里面-按alt-insert。进行选择"><a href="#一、快速生成set-get：在类里面-按alt-insert。进行选择" class="headerlink" title="一、快速生成set/get：在类里面,按alt+insert。进行选择"></a>一、快速生成set/get：在类里面,按alt+insert。进行选择</h3><h3 id="二、git上传忽略不必要文件"><a href="#二、git上传忽略不必要文件" class="headerlink" title="二、git上传忽略不必要文件"></a>二、git上传忽略不必要文件</h3><p><img src="/2021/04/01/Idea%E7%94%9F%E6%88%90set-get/1.jpg" class="lazyload" data-srcset="/2021/04/01/Idea%E7%94%9F%E6%88%90set-get/1.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>]]></content>
       
       
       <categories>
@@ -1363,11 +1363,11 @@
     
     
     <entry>
-      <title>Idea生成set-get</title>
-      <link href="2021/04/01/Idea%E7%94%9F%E6%88%90set-get/"/>
-      <url>2021/04/01/Idea%E7%94%9F%E6%88%90set-get/</url>
+      <title>Idea快捷键设置</title>
+      <link href="2021/04/01/Idea%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%BE%E7%BD%AE/"/>
+      <url>2021/04/01/Idea%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%BE%E7%BD%AE/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="一、快速生成set-get：在类里面-按alt-insert。进行选择"><a href="#一、快速生成set-get：在类里面-按alt-insert。进行选择" class="headerlink" title="一、快速生成set/get：在类里面,按alt+insert。进行选择"></a>一、快速生成set/get：在类里面,按alt+insert。进行选择</h3><h3 id="二、git上传忽略不必要文件"><a href="#二、git上传忽略不必要文件" class="headerlink" title="二、git上传忽略不必要文件"></a>二、git上传忽略不必要文件</h3><p><img src="/2021/04/01/Idea%E7%94%9F%E6%88%90set-get/1.jpg" class="lazyload" data-srcset="/2021/04/01/Idea%E7%94%9F%E6%88%90set-get/1.jpg" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>位置：File–&gt;Settings–&gt;Keymap<br>全局搜索：双击shift<br>Ctrl+W关闭：Main menu–&gt;Window–&gt;Editor Tabs–&gt;Close<br>回退/取消回退：Main menu–&gt;Edit–&gt;Undo/Redo</p>]]></content>
       
       
       <categories>
