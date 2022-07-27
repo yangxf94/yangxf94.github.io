@@ -1,0 +1,2281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/1.0'>
+  <meta name="baidu-site-verification" content="code-iGowDdd2dK" />
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <link rel="preload" href="/css/first.css" as="style">
+  
+
+  <!-- 页面元数据 -->
+  
+  <title>Jenkins自动化部署入门 - 我的技术站</title>
+  
+    <meta name="keywords" content="技术学习">
+  
+
+  
+    <meta name="description" content="Jenkins自动化部署入门">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    <link rel="shortcut icon" type='image/x-icon' href="/./images/1618665657.png">
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/first.css">
+
+  
+
+  
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  
+
+  <script id="loadcss"></script>
+
+  
+<script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        '<h1><b>抱歉，您的浏览器无法访问本站</b></h1>'+
+        '<h3>微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>'+
+        '继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</h3><br/>'+
+        '<a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/WindowsForBusiness/End-of-IE-support"><strong>了解详情 ></strong></a>'+
+    '</div>');
+</script>
+
+
+<noscript>
+	<style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+	</style>
+    <div class="kill-noscript">
+        <h1><b>抱歉，您的浏览器无法访问本站</b></h1>
+        <h3>本页面需要浏览器支持（启用）JavaScript</h3><br/>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
+    </div>
+</noscript>
+
+</head>
+
+  <body>
+    
+
+<header id="l_header" class="l_header auto shadow floatable show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='/images/bitbug_favicon.ico'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>首页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                  
+                  
+                  >
+                  <i class='fa-fw fa fa-book fa-fw fa-fw fa-fw'></i>找文章
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <hr>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <hr>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/photo/
+                  
+                  
+                  
+                    id="photo"
+                  >
+                  <i class='fa fa-image fa-fw fa-fw'></i>一些图片
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于我
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/download/
+                  
+                  
+                  
+                    id="download"
+                  >
+                  <i class='fas fa-download fa-fw'></i>下载资源
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/useful/
+                  
+                  
+                  
+                    id="useful"
+                  >
+                  <i class='fas fa-bars fa-fw'></i>有用的网站
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-home fa-fw'></i>首页
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" 
+                  
+                  
+                  >
+                  <i class='fa-fw fa fa-book fa-fw fa-fw fa-fw'></i>找文章
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <hr>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <hr>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/photo/
+                  
+                  
+                  
+                    id="photo"
+                  >
+                  <i class='fa fa-image fa-fw fa-fw'></i>一些图片
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于我
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/download/
+                  
+                  
+                  
+                    id="download"
+                  >
+                  <i class='fas fa-download fa-fw'></i>下载资源
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/useful/
+                  
+                  
+                  
+                    id="useful"
+                  >
+                  <i class='fas fa-bars fa-fw'></i>有用的网站
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+    <div id="l_body">
+      <div id="l_cover">
+  
+    
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
+          
+            <div id='cover-backstretch'></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">我的技术站</p>
+    
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/"
+              
+              
+              id="home">
+              <i class='fas fa-home fa-fw fa-fw'></i><p>首页</p>
+            </a>
+          
+            <a href="/photo/"
+              
+              
+              id="photo">
+              <i class='fa fa-image fa-fw fa-fw fa-fw'></i><p>图库</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <i class='fas fa-list fa-fw fa-fw'></i><p>时间轴</p>
+            </a>
+          
+            <a href="/download/"
+              
+              
+              id="download">
+              <i class='fas fa-download fa-fw'></i><p>资源</p>
+            </a>
+          
+            <a href="/useful/"
+              
+              
+              id="useful">
+              <i class='fas fa-bars fa-fw'></i><p>网站</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+      <div id="safearea">
+        <div class="body-wrapper" id="pjax-container">
+          
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+  <div class="article-meta" id="top">
+    
+    
+      <a title='Jenkins自动化部署入门' href='/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/'>
+        <img class='thumbnail' src='jenkins-header-logo-v2.svg'>
+      </a>
+    
+    
+      <h1 class="title">
+        Jenkins自动化部署入门
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/about" rel="nofollow">
+    <img no-lazy src="https://cn.bing.com/th?id=AMMS_fc8f99fd41ebd737a71c4e13806db9a0&w=110&h=110&c=7&rs=1&qlt=80&pcl=f9f9f9&cdv=1&dpr=2&pid=16.1">
+    <p>YXF</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <a class='notlink'>
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <a class="category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a><span class="sep"></span><a class="category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/Jenkins/">Jenkins</a>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年7月14日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  
+  <h1 id="0-写在最前面"><a href="#0-写在最前面" class="headerlink" title="0.写在最前面"></a>0.写在最前面</h1><p>这篇文章中，有关于Windows和Linux的两种安装与配置方法</p>
+<p>Jenkins的安装平台，强烈建议要按照你的开发平台来选择。也就是说，你的开发平台是Windows，也就在Windows上安装Jenkins，Linux同理。</p>
+<p>我的这个项目，是Maven+Gitlab+Java1.8-181+微服务+AntUI+VUE等等的一个微服务项目，开发平台是Windows，我一开始将Jenkins部署在了Linux的服务器上，但是反复报错，后来切到了Windows服务器再次部署，屁事没有………..</p>
+<h2 id="0-1-需要注意的点"><a href="#0-1-需要注意的点" class="headerlink" title="0.1.需要注意的点"></a>0.1.需要注意的点</h2><p>1.如果开发平台是Windows，那么，jenkins也建议部署在Windows平台上，这样不会出现很多莫名其妙的错误</p>
+<p>2.jenkins平台，需要搭建对应的开发组件，比如，我的项目是Java+Maven+Git，那么，平台上也要搭建这些组件</p>
+<p>3.下载的jenkins.war，直接java -jar jenkins.war –httpPort=80执行就行，然后网页访问，注意要复制第一次启动的一长串密码</p>
+<p>4.需要配置的几个组件：Publish over SSH用于远程传输文件和命令，Maven Integration用于Maven项目建立，Git用于下载项目代码</p>
+<p>5.配置git的时候，需要生成git密钥，并同步到项目的gitlab或者对应的代码管理工具账户下</p>
+<p>6.下面2.5.1.3里面的各个配置，要根据项目和jenkins平台进行配置</p>
+<p>7.配置项目轮巡中的远程服务器的时候，需要关注jenkins平台上项目的位置和打包的位置，以及文件传输到远程服务器后的文件所在位置</p>
+<p>8.如果修改了系统配置里的数据（比如我修改了SSH传输配置的名称）就需要在使用该配置的项目里再次确认或者配置一下，因为Jenkins是根据这个名称来找对应的SSH服务，不改名就报错</p>
+<h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h1><p>　　在实际开发中，我们经常要一边开发一边测试，当然这里说的测试并不是程序员对自己代码的单元测试，而是同组程序员将代码提交后，由测试人员测试；</p>
+<p>　　或者前后端分离后，经常会修改接口，然后重新部署；</p>
+<p>　　这些情况都会涉及到频繁的打包部署；</p>
+<p>　　手动打包常规步骤：</p>
+<p>　　1.提交代码</p>
+<p>　　2.问一下同组小伙伴有没有要提交的代码</p>
+<p>　　3.拉取代码并打包（war包，或者jar包）</p>
+<p>　　4.上传到Linux服务器</p>
+<p>　　5.查看当前程序是否在运行</p>
+<p>　　6.关闭当前程序</p>
+<p>　　7.启动新的jar包</p>
+<p>　　8.观察日志看是否启动成功</p>
+<p>　　9.如果有同事说，自己还有代码没有提交……再次重复1到8的步骤！！！！！（一上午没了）</p>
+<p>　　那么，有一种工具能够实现，将代码提交到git后就自动打包部署勒，答案是肯定的：Jenkins</p>
+<p>　　当然除了Jenkins以外，也还有其他的工具可以实现自动化部署，如Hudson等</p>
+<p>　　只是Jenkins相对来说，使用得更广泛。</p>
+<h1 id="2-Jenkins服务器搭建及基本配置"><a href="#2-Jenkins服务器搭建及基本配置" class="headerlink" title="2. Jenkins服务器搭建及基本配置"></a>2. Jenkins服务器搭建及基本配置</h1><h2 id="2-1-简介"><a href="#2-1-简介" class="headerlink" title="2.1 简介"></a>2.1 简介</h2><p>　　Jenkins是一个开源软件项目，是基于Java开发的一种持续集成工具，用于监控持续重复的工作，旨在提供一个开放易用的软件平台，使软件的持续集成变成可能。</p>
+<h2 id="2-2-Jenkins自动化部署实现原理"><a href="#2-2-Jenkins自动化部署实现原理" class="headerlink" title="2.2 Jenkins自动化部署实现原理"></a>2.2 Jenkins自动化部署实现原理</h2><p>　　<img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804162611917-80438542.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804162611917-80438542.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<h2 id="2-3-Jenkins部署环境"><a href="#2-3-Jenkins部署环境" class="headerlink" title="2.3 Jenkins部署环境"></a>2.3 Jenkins部署环境</h2><p>　　基本环境：由于我的项目用到这些，所以需要安装，其它的项目也需要对应的组件以便打包或者其他操作</p>
+<p>　　1.jdk环境，Jenkins是java语言开发的，因需要jdk环境。参考文章：<a href="http://www.yangxufei.cn/2021/04/02/Java%E5%AE%89%E8%A3%85/">http://www.yangxufei.cn/2021/04/02/Java%E5%AE%89%E8%A3%85/</a></p>
+<p>　　2.git/svn客户端，因一般代码是放在git/svn服务器上的，我们需要拉取代码。参考文章：<a href="https://www.yangxufei.cn/2021/08/13/Git%E5%AE%89%E8%A3%85/">https://www.yangxufei.cn/2021/08/13/Git%E5%AE%89%E8%A3%85/</a></p>
+<p>　　3.maven客户端，因一般java程序是由maven工程，需要maven打包。参考文章：<a href="https://www.yangxufei.cn/2021/09/13/Maven%E5%AE%89%E8%A3%85/">https://www.yangxufei.cn/2021/09/13/Maven%E5%AE%89%E8%A3%85/</a></p>
+<p>　　以上是自动化部署java程序jenkins需要的基本环境，请自己提前安装好，下面着重讲解Jenkins的安装部署配置。</p>
+<h2 id="2-4-Jenkins安装"><a href="#2-4-Jenkins安装" class="headerlink" title="2.4 Jenkins安装"></a>2.4 Jenkins安装</h2><h3 id="2-4-1-下载安装包"><a href="#2-4-1-下载安装包" class="headerlink" title="2.4.1.下载安装包"></a>2.4.1.下载安装包</h3><p><a target="_blank" rel="noopener" href="http://mirrors.jenkins.io/war-stable/">jenkins</a>或者<a target="_blank" rel="noopener" href="https://www.jenkins.io/zh/download/">这里</a>；</p>
+<p>我最后一次用的包是Windows平台msi文件</p>
+<h3 id="2-4-2-在安装包根路径下，运行命令"><a href="#2-4-2-在安装包根路径下，运行命令" class="headerlink" title="2.4.2.在安装包根路径下，运行命令"></a>2.4.2.在安装包根路径下，运行命令</h3><pre><code>java -jar jenkins.war --httpPort=8080
+</code></pre>
+<p> <code>（linux环境、Windows环境都一样）；</code>第一次启动需要记录输出的一长串字符为初始密码，用80端口也行，这样网页访问的时候就不用输入后面的端口号了</p>
+<h3 id="2-4-3-打开浏览器进入链接-IP-8080"><a href="#2-4-3-打开浏览器进入链接-IP-8080" class="headerlink" title="2.4.3.打开浏览器进入链接  IP:8080"></a>2.4.3.打开浏览器进入链接  IP:8080</h3><h3 id="2-4-4-填写初始密码，激活系统"><a href="#2-4-4-填写初始密码，激活系统" class="headerlink" title="2.4.4.填写初始密码，激活系统"></a>2.4.4.填写初始密码，激活系统</h3><p>　　<img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804165114898-39108820.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804165114898-39108820.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<h3 id="2-4-5-进入插件安装选择"><a href="#2-4-5-进入插件安装选择" class="headerlink" title="2.4.5.进入插件安装选择"></a>2.4.5.进入插件安装选择</h3><p>　　这里建议选择，推荐安装的插件，保证基本常用的功能可以使用。</p>
+<p>　　<img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804165826822-2086692477.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804165826822-2086692477.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p>　　选择后，进入插件安装页面</p>
+<p>　　<img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804170057290-30145508.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804170057290-30145508.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<h3 id="2-4-6-设置初始用户和密码"><a href="#2-4-6-设置初始用户和密码" class="headerlink" title="2.4.6.设置初始用户和密码"></a>2.4.6.设置初始用户和密码</h3><p>可以跳过，如果跳过的话，后面可以用admin用户登陆，初始密码是上面的初始启动密码，登陆进去后可以修改</p>
+<p>　　<img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804165228518-1223223596.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804165228518-1223223596.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<h3 id="2-4-7-进入系统，安装完成"><a href="#2-4-7-进入系统，安装完成" class="headerlink" title="2.4.7.进入系统，安装完成"></a>2.4.7.进入系统，安装完成</h3><p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804170633366-1783861402.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804170633366-1783861402.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p>　　注意，如果还是进入不了系统，需要稍等一下，或者刷新页面，如果还是进入不了，需要重新启动jenkinds服务器。</p>
+<h2 id="2-5-Jenkins基本配置"><a href="#2-5-Jenkins基本配置" class="headerlink" title="2.5 Jenkins基本配置"></a>2.5 Jenkins基本配置</h2><p>　　<img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804174456170-841635691.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804174456170-841635691.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<h3 id="2-5-1-Configure-System-系统设置"><a href="#2-5-1-Configure-System-系统设置" class="headerlink" title="2.5.1.Configure System (系统设置)"></a>2.5.1.Configure System (系统设置)</h3><p>　　在系统设置这里，我们只需要设置最后面的一项，配置远程服务器地址，</p>
+<p>​        如果在这里没有看到Publish over SSH的话，需要进入插件管理，在可选插件里搜索这个插件安装，我这里没搜到是因为我已经安装了</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014113723042.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014113723042.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014113723042"></p>
+<p>　　即我们代码最终运行的服务器地址信息，就像我们之前手动部署时使用xshell登录Linux服务器一样，</p>
+<p>　　当然这里是可以配置多台远程Linux服务器的，配置完成后点击保存即可，为后面我们配置自动化部署做准备，配置如下图</p>
+<p>　　我的配置：前面的配置没什么说的，就是指定的远程服务器的信息，关键是最后一个，上传代码的根路径，我的配置，是/opt/bcdsystem/cache，将文件放到远程服务器的指定缓存文件夹里</p>
+<p>　　<img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804171736842-1134924726.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804171736842-1134924726.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<h3 id="2-5-2-Configure-Gl-全局安全配置"><a href="#2-5-2-Configure-Gl-全局安全配置" class="headerlink" title="2.5.2.Configure Gl(全局安全配置)"></a>2.5.2.Configure Gl(全局安全配置)</h3><h5 id="a-配置用户相关的权限"><a href="#a-配置用户相关的权限" class="headerlink" title="a.配置用户相关的权限"></a>a.配置用户相关的权限</h5><p>我用不上，就没配置</p>
+<p>　　<img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804172950700-2114870814.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804172950700-2114870814.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<h5 id="b-配置钩子程序"><a href="#b-配置钩子程序" class="headerlink" title="b.配置钩子程序"></a>b.配置钩子程序</h5><p>（当用代码更新时通知）访问权限，避免报403错误，用不上，我没搞</p>
+<p>　　默认是勾选上了的，这里去掉勾选</p>
+<p>　　<img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804173204424-1668932536.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804173204424-1668932536.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<h3 id="2-5-3-Global-Tool-Configuration-全局工具配置"><a href="#2-5-3-Global-Tool-Configuration-全局工具配置" class="headerlink" title="2.5.3.Global Tool Configuration (全局工具配置 )"></a>2.5.3.Global Tool Configuration (全局工具配置 )</h3><p><strong>（Linux和Windows都有，注意区别）</strong></p>
+<h5 id="a-配置maven的全局settings路径"><a href="#a-配置maven的全局settings路径" class="headerlink" title="a.配置maven的全局settings路径"></a>a.配置maven的全局settings路径</h5><p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014113857932.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014113857932.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014113857932"></p>
+<h5 id="b-配置jdk"><a href="#b-配置jdk" class="headerlink" title="b.配置jdk"></a>b.配置jdk</h5><p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804174017899-1054358712.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/858186-20190804174017899-1054358712.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="img"></p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014114014125.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014114014125.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014114014125"></p>
+<h5 id="c-配置git"><a href="#c-配置git" class="headerlink" title="c.配置git"></a>c.配置git</h5><p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014114120974.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014114120974.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014114120974"></p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014114108941.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014114108941.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014114108941"></p>
+<h5 id="d-配置maven的安装路径"><a href="#d-配置maven的安装路径" class="headerlink" title="d.配置maven的安装路径"></a>d.配置maven的安装路径</h5><p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014114201356.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014114201356.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014114201356"></p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014114146958.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014114146958.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014114146958"></p>
+<h3 id="2-5-4-配置必要插件"><a href="#2-5-4-配置必要插件" class="headerlink" title="2.5.4.配置必要插件"></a>2.5.4.配置必要插件</h3><p>　　主要是检查如下这两个插件是否已安装</p>
+<p>　　插件1：Publish over SSH</p>
+<p>　　插件2：Maven Integration</p>
+<p>　　插件3：Git</p>
+<p>　　到这里，我们配置一个自动化部署的的java程序（springBoot+maven+gitHub），基本必要配置就差不多了，后面配置过程中如果需要再配置。</p>
+<h2 id="3-Jenkins-Maven-Git-自动化继承-测试"><a href="#3-Jenkins-Maven-Git-自动化继承-测试" class="headerlink" title="3.Jenkins + Maven +Git 自动化继承/测试"></a>3.Jenkins + Maven +Git 自动化继承/测试</h2><h3 id="3-1-配置Git密钥"><a href="#3-1-配置Git密钥" class="headerlink" title="3.1 配置Git密钥"></a>3.1 配置Git密钥</h3><p>输入ssh-keygen</p>
+<p>输入用户名/密码</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014170722426.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014170722426.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014170722426"></p>
+<p>会生成两个个yangxf为名字的密钥，私钥和公钥，cat命令查看内容</p>
+<p>进到gitlab的页面里添加<strong>公钥</strong></p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014170922684.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014170922684.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014170922684"></p>
+<h3 id="3-2-新建Jenkins项目"><a href="#3-2-新建Jenkins项目" class="headerlink" title="3.2 新建Jenkins项目"></a>3.2 新建Jenkins项目</h3><h4 id="3-2-1-Jenkins新建任务"><a href="#3-2-1-Jenkins新建任务" class="headerlink" title="3.2.1 Jenkins新建任务"></a>3.2.1 Jenkins新建任务</h4><p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014171255632.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014171255632.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014171255632"></p>
+<h4 id="3-2-2-输入任务信息"><a href="#3-2-2-输入任务信息" class="headerlink" title="3.2.2 输入任务信息"></a>3.2.2 输入任务信息</h4><p>任务名称，选择Maven项目，确定</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014171344751.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014171344751.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014171344751"></p>
+<h4 id="3-2-3-输入任务描述"><a href="#3-2-3-输入任务描述" class="headerlink" title="3.2.3 输入任务描述"></a>3.2.3 输入任务描述</h4><p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014171519301.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014171519301.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014171519301"></p>
+<h4 id="3-2-4-输入Git信息"><a href="#3-2-4-输入Git信息" class="headerlink" title="3.2.4 输入Git信息"></a>3.2.4 输入Git信息</h4><p>注意这几个都要填写对应的信息，分别是，git地址，用户（没有用户的时候需要点击旁边的“添加”），和分支</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211020115228.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211020115228.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211020115228"></p>
+<p>如果输入Repository URL之后下面红色报错无法连接，是需要点击下面的3添加Jenkins数据，用密钥或者用户输入信息，注意，使用密钥的话为私钥，<strong>我在这里用的是第二个，用户名和密码的方式</strong></p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014171740093.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014171740093.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014171740093"></p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014171803263.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014171803263.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014171803263"></p>
+<h4 id="3-2-5-构建触发器，轮询"><a href="#3-2-5-构建触发器，轮询" class="headerlink" title="3.2.5 构建触发器，轮询"></a>3.2.5 构建触发器，轮询</h4><p>填写 * * * * * 意思是每分钟执行，点击保存即可。也就是，每隔一分钟做一次轮巡，轮巡Git是否上传，若上传，就做下一步处理，相对来说也是比较快的</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014172110961-163420330022317.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211014172110961-163420330022317.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211014172110961"></p>
+<h4 id="3-2-6-构建环境"><a href="#3-2-6-构建环境" class="headerlink" title="3.2.6 构建环境"></a>3.2.6 构建环境</h4><p>红框里的数据，是需要填写项目的pom文件（用于下载对应jar包）和项目打包命令，这个意思就是mvn clean install</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211020115621.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211020115621.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211020115621.png"></p>
+<h4 id="3-2-7-构建后操作"><a href="#3-2-7-构建后操作" class="headerlink" title="3.2.7 构建后操作"></a>3.2.7 构建后操作</h4><p>需要注意的是，这里需要组件Publish over SSH，在系统设置里面进行配置，看上面2.5.1.1</p>
+<p>第一个name，是选择需要传到哪个远程服务器里，就是SSH配置</p>
+<p>source files，是需要传哪些文件，我这里的配置，是**省略前面的父级路径，只传输这几个指定文件，英文逗号分隔</p>
+<pre><code>**/hl-bcd-data-2.4.5-exec.jar,**/hl-bcd-flight-2.4.5.jar,**/jeecg-cloud-gateway-2.4.5.jar,**/jeecg-cloud-nacos-2.4.5.jar,**/jeecg-cloud-system-start-2.4.5.jar
+</code></pre>
+<p>我暂时没做remove 和remote 的配置（因为配置了一直报错，sad……）就让文件上传到2.5.1.1指定的目录下</p>
+<p>后面的Exec command是要在远程服务器上执行什么命令，我执行的脚本，分别是1.将文件从缓存移动到指定执行目录，2.停掉正在运行的后台，3.启动新的后台</p>
+<p>用这样的方式传输文件，并在远程服务器上进行项目的自动化启停</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211020130740961.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211020130740961.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211020130740961"></p>
+<h4 id="3-2-8-任务构建"><a href="#3-2-8-任务构建" class="headerlink" title="3.2.8 任务构建"></a>3.2.8 任务构建</h4><p>返回到主页面，点击任务进行构建</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211015094539817.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211015094539817.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211015094539817"></p>
+<p>如果这个时候报错，进入任务的配置页面，我有报错一下，是因为我上面的配置pom.xml报错，这个时候，要去对应的目录下找项目的该文件，我的目录是在</p>
+<p>Linux：</p>
+<pre><code>/root/.jenkins/workspace/test/jeecg-boot/pom.xml
+</code></pre>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211015155856111.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211015155856111.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211015155856111"></p>
+<p>Windows：</p>
+<pre><code>C:\Users\Administrator\.jenkins\workspace\highland\jeecg-boot\pom.xml
+</code></pre>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211020114921712.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211020114921712.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211020114921712"></p>
+<p>也有报错</p>
+<pre><code>无法连接仓库:Command &quot;/usr/local/git/bin/git ls-remote -h -- http://xxxxxxx.git HEAD&quot; returned status code 1
+</code></pre>
+<p>需要去3.2.3给Git里添加凭据。</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211015155917929.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211015155917929.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211015155917929"></p>
+<p>然后，再回页面进行项目构建，等待pom里jar包的加载和项目的构建。</p>
+<p>然后在执行状态就可以看到我们在执行，左侧的栏会有“构建执行状态”，可以点进去看看</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211015094837461.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211015094837461.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211015094837461"></p>
+<p>然后坐等SUCCESS，控制台输出会提示，进到系统里也能看到jar包已经打好了，Linux和Windows的路径注意一下</p>
+<p>我的Linux路径是：/root/.jenkins/workspace</p>
+<p>我的Windows路径是：C:\Users\Administrator\.jenkins\workspace</p>
+<p>可以去对应的目录里看是否有jar包的生成。</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211015094949441.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211015094949441.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211015094949441"></p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211015095141609.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211015095141609.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211015095141609"></p>
+<p>上面的配置都没问题的话，我经过两次测试，上传后即可成功进行打包并且发布。</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211020131530993.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211020131530993.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211020131530993"></p>
+<h2 id="4-Jenkins部署VUE项目"><a href="#4-Jenkins部署VUE项目" class="headerlink" title="4.Jenkins部署VUE项目"></a>4.Jenkins部署VUE项目</h2><p>前面安装的过程不在赘述，需要注意的是，部署VUE项目，也需要安装相对应的组件，比如我这个项目用到的NodeJs+NPM，参考文章：<a href="https://www.yangxufei.cn/2021/06/12/NodeJS%E5%AE%89%E8%A3%85/">https://www.yangxufei.cn/2021/06/12/NodeJS%E5%AE%89%E8%A3%85/</a></p>
+<h3 id="4-1前端插件"><a href="#4-1前端插件" class="headerlink" title="4.1前端插件"></a>4.1前端插件</h3><p>前端自动化部署，也需要安装对应的Jenkins插件，比如我这里需要的node插件</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022092229935.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022092229935.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211022092229935"></p>
+<h3 id="4-2全局配置"><a href="#4-2全局配置" class="headerlink" title="4.2全局配置"></a>4.2全局配置</h3><p>在全局配置里，配置对应的node环境</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022092353175.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022092353175.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211022092353175"></p>
+<p>由于我的服务器上，前端是部署在nginx下，因此，在系统设置里新增加了一个前端需要的SSH server</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022092806840.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022092806840.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211022092806840"></p>
+<h3 id="4-3建立项目"><a href="#4-3建立项目" class="headerlink" title="4.3建立项目"></a>4.3建立项目</h3><p>然后就是新建一个Jenkins任务，我用的这个</p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022092931548.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022092931548.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211022092931548"></p>
+<p>其中的配置不再详细说明，我只在此贴出我的配置数据，需要注意的是，这里的<strong>“构建”</strong>里的命令，是Windows的命令，因为在这里，我是通过Windows命令进行操作，第一行是删除之前已有的打包好的项目（其实这一行可以不要，因为打包前会执行删除），后一行是进行本次打包</p>
+<pre><code>rd C:\Users\Administrator\.jenkins\workspace\bcdsystem_web\dist\
+npm run build
+</code></pre>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022093556910.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022093556910.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211022093556910"></p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022093608105.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022093608105.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211022093608105"></p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022093621121.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022093621121.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211022093621121"></p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022093635050.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022093635050.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211022093635050"></p>
+<p><img src="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022093647324.png" class="lazyload" data-srcset="/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/image-20211022093647324.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" alt="image-20211022093647324"></p>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-07-14T10:21:06+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年7月14日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>技术学习</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://www.yangxufei.cn/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/&title=Jenkins自动化部署入门 - 我的技术站&pics=jenkins-header-logo-v2.svg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://www.yangxufei.cn/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/&title=Jenkins自动化部署入门 - 我的技术站&pics=jenkins-header-logo-v2.svg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://www.yangxufei.cn/2021/07/14/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%85%A5%E9%97%A8/&title=Jenkins自动化部署入门 - 我的技术站&pics=jenkins-header-logo-v2.svg&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2021/08/13/Git%E5%AE%89%E8%A3%85/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Git安装</p>
+          <p class='content'>1.Linux环境1、进入git在GitHub上发布版本页面https://github.com/git/git/releases这个页面我们可以找到所有git已发布的版本。这里我们选择最新版的...</p>
+        </a>
+      
+      
+        <a class='next' href='/2021/06/12/NodeJS%E5%AE%89%E8%A3%85/'>
+          <p class='title'>NodeJS安装<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Node.js+npm安装配置本章节我们将向大家介绍在 Windows 和 Linux 上安装 Node.js 的方法。
+本安装教程以 Node.js v4.4.3 LTS(长期支持版本)版本为...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  
+
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+<section class="widget blogger shadow desktop mobile">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img no-lazy src='/images/mycat.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>我的小站</h2>
+        
+        
+          <p>技术站</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">我的技术站</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/"
+              class="social fas fa-home fa-fw flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="/photo"
+              class="social fa fa-image fa-fw fa-fw flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="/about"
+              class="social fas fa-info-circle fa-fw flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="/download"
+              class="social fas fa-download flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget category shadow desktop">
+    
+  <header>
+    
+      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/Hexo/" href="/categories/Hexo/"
+            id="categoriesHexo"
+            ><div class='name'>Hexo</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"
+            id="categoriesE4B8ADE997B4E4BBB6"
+            ><div class='name'>中间件</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/Jenkins/" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/Jenkins/"
+            id="categoriesE4B8ADE997B4E4BBB6Jenkins"
+            ><div class='name'>Jenkins</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%85%AC%E5%8F%B8/" href="/categories/%E5%85%AC%E5%8F%B8/"
+            id="categoriesE585ACE58FB8"
+            ><div class='name'>公司</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%85%AC%E5%8F%B8/%E4%B8%80%E5%8F%B7%E7%B3%BB%E7%BB%9F/" href="/categories/%E5%85%AC%E5%8F%B8/%E4%B8%80%E5%8F%B7%E7%B3%BB%E7%BB%9F/"
+            id="categoriesE585ACE58FB8E4B880E58FB7E7B3BBE7BB9F"
+            ><div class='name'>一号系统</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%85%B6%E5%AE%83/" href="/categories/%E5%85%B6%E5%AE%83/"
+            id="categoriesE585B6E5AE83"
+            ><div class='name'>其它</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
+            id="categoriesE5898DE7ABAF"
+            ><div class='name'>前端</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%89%8D%E7%AB%AF/Node/" href="/categories/%E5%89%8D%E7%AB%AF/Node/"
+            id="categoriesE5898DE7ABAFNode"
+            ><div class='name'>Node</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/"
+            id="categoriesE5908EE58FB0E6A186E69EB6"
+            ><div class='name'>后台框架</div><div class='badge'>(5)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Feign/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Feign/"
+            id="categoriesE5908EE58FB0E6A186E69EB6Feign"
+            ><div class='name'>Feign</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Mybatis/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Mybatis/"
+            id="categoriesE5908EE58FB0E6A186E69EB6Mybatis"
+            ><div class='name'>Mybatis</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Spring/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Spring/"
+            id="categoriesE5908EE58FB0E6A186E69EB6Spring"
+            ><div class='name'>Spring</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/SpringBoot/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/SpringBoot/"
+            id="categoriesE5908EE58FB0E6A186E69EB6SpringBoot"
+            ><div class='name'>SpringBoot</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Swagger/" href="/categories/%E5%90%8E%E5%8F%B0%E6%A1%86%E6%9E%B6/Swagger/"
+            id="categoriesE5908EE58FB0E6A186E69EB6Swagger"
+            ><div class='name'>Swagger</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"
+            id="categoriesE5BC80E58F91E5B7A5E585B7"
+            ><div class='name'>开发工具</div><div class='badge'>(13)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Git/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Git/"
+            id="categoriesE5BC80E58F91E5B7A5E585B7Git"
+            ><div class='name'>Git</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/GitLab/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/GitLab/"
+            id="categoriesE5BC80E58F91E5B7A5E585B7GitLab"
+            ><div class='name'>GitLab</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Idea/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/Idea/"
+            id="categoriesE5BC80E58F91E5B7A5E585B7Idea"
+            ><div class='name'>Idea</div><div class='badge'>(5)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/PowerDesigner/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/PowerDesigner/"
+            id="categoriesE5BC80E58F91E5B7A5E585B7PowerDesigner"
+            ><div class='name'>PowerDesigner</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/VSCode/" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/VSCode/"
+            id="categoriesE5BC80E58F91E5B7A5E585B7VSCode"
+            ><div class='name'>VSCode</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/" href="/categories/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/"
+            id="categoriesE5BC80E58F91E8AFADE8A880"
+            ><div class='name'>开发语言</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/Java/" href="/categories/%E5%BC%80%E5%8F%91%E8%AF%AD%E8%A8%80/Java/"
+            id="categoriesE5BC80E58F91E8AFADE8A880Java"
+            ><div class='name'>Java</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
+            id="categoriesE6938DE4BD9CE7B3BBE7BB9F"
+            ><div class='name'>操作系统</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/CentOS/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/CentOS/"
+            id="categoriesE6938DE4BD9CE7B3BBE7BB9FCentOS"
+            ><div class='name'>CentOS</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/"
+            id="categoriesE6938DE4BD9CE7B3BBE7BB9FLinux"
+            ><div class='name'>Linux</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Windows/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Windows/"
+            id="categoriesE6938DE4BD9CE7B3BBE7BB9FWindows"
+            ><div class='name'>Windows</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"
+            id="categoriesE695B0E68DAEE5BA93"
+            ><div class='name'>数据库</div><div class='badge'>(9)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"
+            id="categoriesE695B0E68DAEE5BA93MySQL"
+            ><div class='name'>MySQL</div><div class='badge'>(9)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E7%BB%84%E4%BB%B6/" href="/categories/%E7%BB%84%E4%BB%B6/"
+            id="categoriesE7BB84E4BBB6"
+            ><div class='name'>组件</div><div class='badge'>(13)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E7%BB%84%E4%BB%B6/Maven/" href="/categories/%E7%BB%84%E4%BB%B6/Maven/"
+            id="categoriesE7BB84E4BBB6Maven"
+            ><div class='name'>Maven</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E7%BB%84%E4%BB%B6/Nginx/" href="/categories/%E7%BB%84%E4%BB%B6/Nginx/"
+            id="categoriesE7BB84E4BBB6Nginx"
+            ><div class='name'>Nginx</div><div class='badge'>(5)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E7%BB%84%E4%BB%B6/Redis/" href="/categories/%E7%BB%84%E4%BB%B6/Redis/"
+            id="categoriesE7BB84E4BBB6Redis"
+            ><div class='name'>Redis</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E7%BB%84%E4%BB%B6/ffmpeg/" href="/categories/%E7%BB%84%E4%BB%B6/ffmpeg/"
+            id="categoriesE7BB84E4BBB6ffmpeg"
+            ><div class='name'>ffmpeg</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E7%BB%84%E4%BB%B6/frp/" href="/categories/%E7%BB%84%E4%BB%B6/frp/"
+            id="categoriesE7BB84E4BBB6frp"
+            ><div class='name'>frp</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget tagcloud shadow desktop mobile">
+    
+  <header>
+    
+      <a href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>文章标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <a href="/tags/Feign/" style="font-size: 16px; color: #8b8b8b">Feign</a> <a href="/tags/GitLab/" style="font-size: 18px; color: #7e7e7e">GitLab</a> <a href="/tags/Hexo/" style="font-size: 16px; color: #8b8b8b">Hexo</a> <a href="/tags/Linux/" style="font-size: 16px; color: #8b8b8b">Linux</a> <a href="/tags/MySQL/" style="font-size: 16px; color: #8b8b8b">MySQL</a> <a href="/tags/Nginx/" style="font-size: 20px; color: #707070">Nginx</a> <a href="/tags/ffmpeg/" style="font-size: 14px; color: #999">ffmpeg</a> <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" style="font-size: 22px; color: #636363">命令行</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" style="font-size: 24px; color: #555">技术学习</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2/" style="font-size: 14px; color: #999">系统部署</a> <a href="/tags/%E9%94%99%E8%AF%AF%E6%8E%92%E6%9F%A5/" style="font-size: 20px; color: #707070">错误排查</a>
+    </div>
+  </section>
+
+
+  
+
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-1-%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E7%82%B9"><span class="toc-text">0.1.需要注意的点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E7%AE%80%E4%BB%8B"><span class="toc-text">2.1 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-text">2.2 Jenkins自动化部署实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-Jenkins%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83"><span class="toc-text">2.3 Jenkins部署环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-Jenkins%E5%AE%89%E8%A3%85"><span class="toc-text">2.4 Jenkins安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-1-%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-text">2.4.1.下载安装包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-2-%E5%9C%A8%E5%AE%89%E8%A3%85%E5%8C%85%E6%A0%B9%E8%B7%AF%E5%BE%84%E4%B8%8B%EF%BC%8C%E8%BF%90%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">2.4.2.在安装包根路径下，运行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-3-%E6%89%93%E5%BC%80%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%9B%E5%85%A5%E9%93%BE%E6%8E%A5-IP-8080"><span class="toc-text">2.4.3.打开浏览器进入链接  IP:8080</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-4-%E5%A1%AB%E5%86%99%E5%88%9D%E5%A7%8B%E5%AF%86%E7%A0%81%EF%BC%8C%E6%BF%80%E6%B4%BB%E7%B3%BB%E7%BB%9F"><span class="toc-text">2.4.4.填写初始密码，激活系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-5-%E8%BF%9B%E5%85%A5%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%80%89%E6%8B%A9"><span class="toc-text">2.4.5.进入插件安装选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-6-%E8%AE%BE%E7%BD%AE%E5%88%9D%E5%A7%8B%E7%94%A8%E6%88%B7%E5%92%8C%E5%AF%86%E7%A0%81"><span class="toc-text">2.4.6.设置初始用户和密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-7-%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90"><span class="toc-text">2.4.7.进入系统，安装完成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-Jenkins%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-text">2.5 Jenkins基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-1-Configure-System-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE"><span class="toc-text">2.5.1.Configure System (系统设置)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-2-Configure-Gl-%E5%85%A8%E5%B1%80%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE"><span class="toc-text">2.5.2.Configure Gl(全局安全配置)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E7%9B%B8%E5%85%B3%E7%9A%84%E6%9D%83%E9%99%90"><span class="toc-text">a.配置用户相关的权限</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-%E9%85%8D%E7%BD%AE%E9%92%A9%E5%AD%90%E7%A8%8B%E5%BA%8F"><span class="toc-text">b.配置钩子程序</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-3-Global-Tool-Configuration-%E5%85%A8%E5%B1%80%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE"><span class="toc-text">2.5.3.Global Tool Configuration (全局工具配置 )</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-%E9%85%8D%E7%BD%AEmaven%E7%9A%84%E5%85%A8%E5%B1%80settings%E8%B7%AF%E5%BE%84"><span class="toc-text">a.配置maven的全局settings路径</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-%E9%85%8D%E7%BD%AEjdk"><span class="toc-text">b.配置jdk</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-%E9%85%8D%E7%BD%AEgit"><span class="toc-text">c.配置git</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#d-%E9%85%8D%E7%BD%AEmaven%E7%9A%84%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84"><span class="toc-text">d.配置maven的安装路径</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-4-%E9%85%8D%E7%BD%AE%E5%BF%85%E8%A6%81%E6%8F%92%E4%BB%B6"><span class="toc-text">2.5.4.配置必要插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Jenkins-Maven-Git-%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BB%A7%E6%89%BF-%E6%B5%8B%E8%AF%95"><span class="toc-text">3.Jenkins + Maven +Git 自动化继承&#x2F;测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E9%85%8D%E7%BD%AEGit%E5%AF%86%E9%92%A5"><span class="toc-text">3.1 配置Git密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%96%B0%E5%BB%BAJenkins%E9%A1%B9%E7%9B%AE"><span class="toc-text">3.2 新建Jenkins项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-Jenkins%E6%96%B0%E5%BB%BA%E4%BB%BB%E5%8A%A1"><span class="toc-text">3.2.1 Jenkins新建任务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E8%BE%93%E5%85%A5%E4%BB%BB%E5%8A%A1%E4%BF%A1%E6%81%AF"><span class="toc-text">3.2.2 输入任务信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-%E8%BE%93%E5%85%A5%E4%BB%BB%E5%8A%A1%E6%8F%8F%E8%BF%B0"><span class="toc-text">3.2.3 输入任务描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-4-%E8%BE%93%E5%85%A5Git%E4%BF%A1%E6%81%AF"><span class="toc-text">3.2.4 输入Git信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-5-%E6%9E%84%E5%BB%BA%E8%A7%A6%E5%8F%91%E5%99%A8%EF%BC%8C%E8%BD%AE%E8%AF%A2"><span class="toc-text">3.2.5 构建触发器，轮询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-6-%E6%9E%84%E5%BB%BA%E7%8E%AF%E5%A2%83"><span class="toc-text">3.2.6 构建环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-7-%E6%9E%84%E5%BB%BA%E5%90%8E%E6%93%8D%E4%BD%9C"><span class="toc-text">3.2.7 构建后操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-8-%E4%BB%BB%E5%8A%A1%E6%9E%84%E5%BB%BA"><span class="toc-text">3.2.8 任务构建</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Jenkins%E9%83%A8%E7%BD%B2VUE%E9%A1%B9%E7%9B%AE"><span class="toc-text">4.Jenkins部署VUE项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1%E5%89%8D%E7%AB%AF%E6%8F%92%E4%BB%B6"><span class="toc-text">4.1前端插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE"><span class="toc-text">4.2全局配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3%E5%BB%BA%E7%AB%8B%E9%A1%B9%E7%9B%AE"><span class="toc-text">4.3建立项目</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+		  
+		  <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="Jenkins自动化部署入门";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+  // header 这里无论是否开启pjax都需要
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+  
+    // cover
+    var cover_wrapper=document.querySelector('.cover-wrapper');
+    
+    cover_wrapper.id="none";
+    cover_wrapper.style.display="none";
+    
+  
+</script>
+
+        </div>
+        
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='true'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='true'
+      list-max-height='320px'
+      server='netease'
+      type='playlist'
+      id='37432514'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>我的网站，我的进步</p>
+</div>
+      
+    
+      
+        
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">小站运行 © 2021-∞</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+        <a id="s-top" class="fas fa-arrow-up fa-fw" href="javascript:void(0)"></a>
+      </div>
+    </div>
+    <div>
+      <script>
+/************这个文件存放不需要重载的全局变量和全局函数*********/
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/******************** Pjax ********************************/
+function VPjax(){
+	this.list=[] // 存放回调函数
+	this.start=()=>{
+	  for(var i=0;i<this.list.length;i++){
+		this.list[i].run();
+	  }
+	}
+	this.push=(fn,name)=>{
+		var f=new PjaxItem(fn,name);
+		this.list.push(f);
+	}
+	// 构造一个可以run的对象
+	function PjaxItem(fn,name){
+		// 函数名称
+		this.name = name || fn.name
+		// run方法
+		this.run=()=>{
+			fn()
+		}
+	}
+}
+volantis.pjax={}
+volantis.pjax.method={
+	complete: new VPjax(),
+	error: new VPjax(),
+	send: new VPjax()
+}
+volantis.pjax={
+	...volantis.pjax,
+	push: volantis.pjax.method.complete.push,
+	error: volantis.pjax.method.error.push,
+	send: volantis.pjax.method.send.push
+}
+/********************脚本懒加载函数********************************/
+// 已经加入了setTimeout
+function loadScript(src, cb) {
+	setTimeout(function() {
+		var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+		var script = document.createElement('script');
+		script.setAttribute('type','text/javascript');
+		if (cb) script.onload = cb;
+		script.setAttribute('src', src);
+		HEAD.appendChild(script);
+	});
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+  loadCSS("https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10/build/styles/solarized-light.min.css", window.volantis.loadcss);
+  
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+  function Pjax_SCload_fancybox(){
+	if (typeof $.fancybox == "undefined") {
+	 SCload_fancybox();
+    } else {
+	 pjax_fancybox();
+    }
+  }
+  volantis.pjax.push(Pjax_SCload_fancybox)
+  volantis.pjax.send(()=>{
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+  },'fancybox')
+</script>
+
+
+<!-- internal -->
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+        var imgs=["https://bing.ioliu.cn/v1/rand?w=1920&h=1200", "https://bing.ioliu.cn/v1/rand?w=1920&h=1200", "https://bing.ioliu.cn/v1/rand?w=1920&h=1200"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+	  function Pjax_backstretch(){
+        
+          $('#cover-backstretch').backstretch(
+            imgs,
+          {
+            duration: "5000",
+            fade: "1500"
+          });
+        
+	  }
+	  loadScript("https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js",Pjax_backstretch)
+    </script>
+  
+
+
+
+  
+  
+
+  <div id="rightmenu-wrapper">
+    <ul class="list-v rightmenu" id="rightmenu-content">
+      <li class='option'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-text' onclick="document.execCommand('copy')"><i class='fa fa-copy fa-fw'></i>复制文本</a>
+        <hr id='hr-text'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-href'><i class='fa fa-link fa-fw'></i>复制链接</a>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-open-href'><i class='fa fa-external-link-square-alt fa-fw'></i>在新标签页打开</a>
+        <hr id='hr-href'>
+        <a class='vlts-menu opt fix-cursor-default' id='menu-copy-src'><i class='fa fa-image fa-fw'></i>复制图片地址</a>
+        <hr id='hr-src'>
+      </li>
+      
+        <li class='navigation'>
+          <a class='nav icon-only fix-cursor-default' onclick='history.back()'><i class='fa fa-arrow-left fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='history.forward()'><i class='fa fa-arrow-right fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' onclick='window.location.reload()'><i class='fa fa-redo fa-fw'></i></a>
+          <a class='nav icon-only fix-cursor-default' href='/'><i class='fa fa-home fa-fw'></i></a>
+        </li>
+      
+      <hr>
+      
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default ' href=/categories/
+        
+        
+        
+        
+          id="categories"
+        >
+        <i class='fas fa-folder-open fa-fw'></i> 分类
+      </a>
+    </li>
+  
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default ' href=/tags/
+        
+        
+        
+        
+          id="tags"
+        >
+        <i class='fas fa-tags fa-fw'></i> 标签
+      </a>
+    </li>
+  
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default ' href=/archives/
+        
+        
+        
+        
+          id="archives"
+        >
+        <i class='fas fa-archive fa-fw'></i> 时间轴
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default ' href=/photo/
+        
+        
+        
+        
+          id="photo"
+        >
+        <i class='fa fa-image fa-fw fa-fw'></i> 图库
+      </a>
+    </li>
+  
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default ' href=/about/
+        
+        
+        
+        
+          id="about"
+        >
+        <i class='fas fa-info-circle fa-fw'></i> 关于我
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          
+    <li>
+      <a class='vlts-menu fix-cursor-default toggle-mode-btn' 
+        
+        
+        
+        >
+        <i class='fas fa-moon fa-fw'></i> 黑色模式
+      </a>
+    </li>
+  
+        
+      
+        
+          <hr>
+        
+      
+        
+          <li class='music name'>
+            <p class='nav music-title fix-cursor-default'></p>
+          </li>
+          <li class='music ctrl'>
+            <a class='nav icon-only backward fix-cursor-default' onclick='aplayerBackward()'><i class='fa fa-step-backward fa-fw'></i></a>
+            <a class='nav icon-only toggle fix-cursor-default' onclick='aplayerToggle()'><i class='fa fa-play fa-fw'></i></a>
+            <a class='nav icon-only forward fix-cursor-default' onclick='aplayerForward()'><i class='fa fa-step-forward fa-fw'></i></a>
+          </li>
+          <li class='music volume'>
+            <a class='nav volume'>
+              <div class="aplayer-volume-bar-wrap">
+                <div class="aplayer-volume-bar fix-cursor-pointer">
+                  <div class="aplayer-volume"></div>
+                  <i class='left fa fa-volume-off fa-fw'></i>
+                  <i class='right fa fa-volume-up fa-fw'></i>
+                </div>
+              </div>
+            </a>
+          </li>
+        
+      
+    </ul>
+  </div>
+
+  <script>
+    window.document.oncontextmenu = function (event) {
+      if (event.ctrlKey) return true;
+      if (/Android|webOS|BlackBerry/i.test(navigator.userAgent)) return true;
+      return popMenu(event);
+    };
+    document.addEventListener("click", function (event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      mymenu.style.display = "none";
+    });
+    function popMenu(event) {
+      var mymenu = document.getElementById('rightmenu-wrapper');
+      var menuContent = document.getElementById('rightmenu-content');
+      var screenWidth = document.documentElement.clientWidth || document.body.clientWidth;
+      var screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      mymenu.style.left = event.clientX + "px"; // 获取鼠标位置
+      mymenu.style.top = event.clientY + "px";
+      mymenu.style.display = 'block';
+      if (event.clientX * 2 > screenWidth) {
+        menuContent.classList.add('left');
+      } else {
+        menuContent.classList.remove('left');
+      }
+      if (event.clientY * 2 > screenHeight) {
+        menuContent.classList.add('top');
+      } else {
+        menuContent.classList.remove('top');
+      }
+
+      let hrText = document.getElementById('hr-text');
+      let hrSrc = document.getElementById('hr-src');
+      let hrHref = document.getElementById('hr-href');
+
+      // 选中图片
+      let copySrc = document.getElementById('menu-copy-src');
+      if (copySrc != undefined) {
+        if (event.target.currentSrc) {
+          copySrc.style.display = 'block';
+          copySrc.addEventListener("click", function (e) {
+            copyString(event.target.currentSrc);
+          },{once: true});
+          hrSrc.style.display = 'block';
+        } else {
+          copySrc.style.display = 'none';
+          hrSrc.style.display = 'none';
+        }
+      }
+
+      // 选中按钮
+      // 判断是不是按钮
+      let href = '';
+      if (event.path) {
+        for (i = 0; i < event.path.length; i++) {
+          if (event.path[i].href != undefined && event.path[i].href.length > 0) {
+            href = event.path[i].href;
+          }
+        }
+      }
+
+      let copyText = document.getElementById('menu-copy-text');
+      copyText.style.display = 'none';
+      hrText.style.display = 'none';
+      if (href.length == 0) {
+        // 选中文本
+        if (window.getSelection().toString()) {
+          if ('true' == 'true') {
+            copyText.style.display = 'block';
+            hrText.style.display = 'block';
+          }
+        }
+      }
+
+      // 在新标签页打开
+      let openHref = document.getElementById('menu-open-href');
+      if (openHref != undefined) {
+        if (href.length > 0) {
+          openHref.style.display = 'block';
+          openHref.addEventListener("click", function (e) {
+            window.open(href);
+          },{once: true});
+          hrHref.style.display = 'block';
+        } else {
+          openHref.style.display = 'none';
+          hrHref.style.display = 'none';
+        }
+      }
+      // 复制链接
+      let copyHref = document.getElementById('menu-copy-href');
+      if (copyHref != undefined) {
+        if (href.length > 0) {
+          copyHref.style.display = 'block';
+          copyHref.addEventListener("click", function (e) {
+            copyString(href);
+          },{once: true});
+        } else {
+          copyHref.style.display = 'none';
+        }
+      }
+      // 有音乐播放器 see: layout/_third-party/aplayer/script.ejs
+      
+      if(volantis.APlayerLoaded){ // APlayer加载完成？
+        // 如果有aplayer，初始化一下
+        checkAPlayer();
+      }
+      
+      return false; // 该行代码确保系统自带的右键菜单不会被调出
+    }
+    function hideMenu() {
+      document.getElementById('rightmenu-wrapper').style.display = 'none';
+    }
+    function copyString(str) {
+      const input = document.createElement('input');
+      input.setAttribute('readonly', 'readonly');
+      document.body.appendChild(input);
+      input.setAttribute('value', str);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+    }
+    document.execCommand('click');
+  </script>
+
+
+
+
+<script>
+  function loadIssuesJS() {
+    if ($(".md").find(".issues-api").length == 0) return;
+	
+	  loadScript('/js/issues.js');
+	
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  volantis.pjax.push(()=>{
+	if (typeof IssuesAPI == "undefined") {
+	  loadIssuesJS();
+	}
+  },"IssuesJS")
+</script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+
+<script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: [],
+	maxRPS: 5,
+	hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+	volantis.pjax.push(pjax_initCopyCode)
+</script>
+
+
+
+
+
+
+  <script>
+  let APlayerController = new Object();
+  APlayerController.id = '37432514';  // 设定全局音乐播放ID
+  APlayerController.volume = '0.7';
+  loadCSS("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css", window.volantis.loadcss);
+  // APlayer 需要在  MetingJS 之前加载
+  loadScript("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js")
+  window.volantis.APlayerLoaded=0 // APlayer加载完成状态
+  var checkAPlayer = setInterval(function () {
+    if (!window.APlayer) return // APlayer加载完成？
+	  if ($("#safearea").css("display")!="block") return // 文章内容加载完成？ see: source/css/first.styl
+    clearInterval(checkAPlayer)
+	  if (!window.volantis.APlayerLoaded&&!window.MetingJSElement){ // APlayer只能加载一次
+      window.volantis.APlayerLoaded=1 // APlayer加载完成
+      loadScript("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js") // 加载 MetingJS
+	  }
+  }, 2500) // 按照网速调节差分2.5s
+  // rightmenu see: layout/_partial/rightmenu.ejs
+
+  
+    loadScript("/js/aplayer.js")
+  
+
+</script>
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('/js/search/hexo.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10/build/highlight.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+volantis.pjax.push(()=>{
+	document.querySelectorAll('pre code').forEach((block) => {
+	  hljs.highlightBlock(block);
+	});
+},"highlightjs")
+</script>
+
+
+
+
+
+  <script>
+const rootElement = document.documentElement;
+const darkModeStorageKey = "user-color-scheme";
+const rootElementDarkModeAttributeName = "data-user-color-scheme";
+
+const setLS = (k, v) => {
+    localStorage.setItem(k, v);
+};
+
+const removeLS = (k) => {
+    localStorage.removeItem(k);
+};
+
+const getLS = (k) => {
+    return localStorage.getItem(k);
+};
+
+const getModeFromCSSMediaQuery = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+
+const resetRootDarkModeAttributeAndLS = () => {
+  rootElement.removeAttribute(rootElementDarkModeAttributeName);
+  removeLS(darkModeStorageKey);
+};
+
+const validColorModeKeys = {
+  dark: true,
+  light: true,
+};
+
+const applyCustomDarkModeSettings = (mode) => {
+  const currentSetting = mode || getLS(darkModeStorageKey);
+
+  if (currentSetting === getModeFromCSSMediaQuery()) {
+    resetRootDarkModeAttributeAndLS();
+  } else if (validColorModeKeys[currentSetting]) {
+    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
+  } else {
+    resetRootDarkModeAttributeAndLS();
+  }
+};
+
+const invertDarkModeObj = {
+  dark: "light",
+  light: "dark",
+};
+
+/**
+ * get target mode
+ */
+const toggleCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  setLS(darkModeStorageKey, currentSetting);
+  return currentSetting;
+};
+
+/**
+ * bind click event for toggle button
+ */
+var btn=$("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn");
+function bindToggleButton() {
+    btn.on('click',(e) => {
+      const mode = toggleCustomDarkMode();
+      applyCustomDarkModeSettings(mode);
+    });
+}
+
+applyCustomDarkModeSettings();
+document.addEventListener("DOMContentLoaded", bindToggleButton);
+volantis.pjax.push(bindToggleButton);
+volantis.pjax.send(()=>{
+	btn.unbind('click');
+},'toggle-mode-btn-unbind');
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+ 
+	   
+	    
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  // 使用 volantis.pjax.send 方法传入pjax:send回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.send.start();
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+		// 使用 volantis.pjax.push 方法传入重载函数 参见layout/_partial/scripts/global.ejs
+		volantis.pjax.method.complete.start();
+      } catch (e) {
+        console.log(e);
+      }
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  // 使用 volantis.pjax.error 方法传入pjax:error回调函数 参见layout/_partial/scripts/global.ejs
+	  volantis.pjax.method.error.start();
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+ 
+	  
+    </div>
+  </body>
+</html>
